@@ -1,4 +1,8 @@
 import type { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import type { TagLink } from 'contentful';
+
+import { useQuery } from '@tanstack/react-query';
+import { client } from '@/lib/contentful';
 
 type Picture = {
     id: string;
@@ -10,15 +14,13 @@ type Picture = {
     tags: TagLink[];
 };
 
-import { useQuery } from '@tanstack/react-query';
-import { client } from '@/lib/contentful';
-import { TagLink } from 'contentful';
-
-export const getPictures = async (filter: string): Promise<Picture[]> => {
+export const getPictures = async (query: string[]): Promise<Picture[]> => {
     const assets = await client.getAssets();
 
     return assets.items
-        .filter((item) => !filter || item.metadata.tags.some((tag) => tag.sys.id === filter))
+        .filter(
+            (item) => !query.length || item.metadata.tags.some((tag) => query.includes(tag.sys.id))
+        )
         .map((asset) => ({
             id: asset.sys.id,
             url: `https:${asset.fields.file.url}`,
@@ -33,14 +35,14 @@ export const getPictures = async (filter: string): Promise<Picture[]> => {
 type QueryFnType = typeof getPictures;
 
 type UsePicturesOptions = {
-    filter: string;
+    query: string[];
     config?: QueryConfig<QueryFnType>;
 };
 
-export const usePictures = ({ filter, config }: UsePicturesOptions) => {
+export const usePictures = ({ query, config }: UsePicturesOptions) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
-        queryKey: ['pictures', filter],
-        queryFn: () => getPictures(filter),
+        queryKey: ['pictures', query],
+        queryFn: () => getPictures(query),
         ...config
     });
 };
