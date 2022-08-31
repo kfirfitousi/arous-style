@@ -21,6 +21,7 @@ export const getPictures = async (query: string[]): Promise<Picture[]> => {
         .filter(
             (item) => !query.length || item.metadata.tags.some((tag) => query.includes(tag.sys.id))
         )
+        .sort((a, b) => a.fields.title.localeCompare(b.fields.title))
         .map((asset) => ({
             id: asset.sys.id,
             url: `https:${asset.fields.file.url}`,

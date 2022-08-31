@@ -27,23 +27,28 @@ export const Gallery = () => {
 
     return (
         <>
-            <div className="flex flex-row justify-center space-x-2 mt-3">
-                <FilterButton tag="shoes" text="Shoes - נעליים" query={query} setQuery={setQuery} />
+            <div className="flex flex-row justify-center space-x-2 mt-3 px-2">
                 <FilterButton
-                    tag="scarf"
-                    text="Scarves - צעיפים"
+                    tag="shoes"
+                    text="Shoes • נעליים • الاحذيه"
+                    query={query}
+                    setQuery={setQuery}
+                />
+                <FilterButton
+                    tag="accessory"
+                    text="Accessories • אביזרים • اكسسوارات"
                     query={query}
                     setQuery={setQuery}
                 />
                 <FilterButton
                     tag="skirt"
-                    text="Skirts - חצאיות"
+                    text="Skirts • חצאיות • التنورات"
                     query={query}
                     setQuery={setQuery}
                 />
                 <FilterButton
                     tag="jewelry"
-                    text="Jewelry - תכשיטים"
+                    text="Jewelry • תכשיטים • المجوهرات"
                     query={query}
                     setQuery={setQuery}
                 />

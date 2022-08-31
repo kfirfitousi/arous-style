@@ -4,7 +4,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Glory', 'sans-serif']
+                sans: ['Glory', 'Alef', 'Cairo', 'sans-serif']
             }
         }
     },
