@@ -8,6 +8,7 @@ type Picture = {
     id: string;
     url: string;
     title: string;
+    title_en: string;
     width: number;
     height: number;
     price: string;
@@ -17,20 +18,23 @@ type Picture = {
 export const getPictures = async (query: string[]): Promise<Picture[]> => {
     const assets = await client.getAssets();
 
-    return assets.items
+    const pictures = assets.items
         .filter(
             (item) => !query.length || item.metadata.tags.some((tag) => query.includes(tag.sys.id))
         )
         .sort((a, b) => a.fields.title.localeCompare(b.fields.title))
-        .map((asset) => ({
+        .map(async (asset) => ({
             id: asset.sys.id,
             url: `https:${asset.fields.file.url}`,
             title: asset.fields.title,
+            title_en: (await client.getAsset(asset.sys.id, { locale: 'en' })).fields.title,
             width: asset.fields.file.details.image!.width,
             height: asset.fields.file.details.image!.height,
             price: asset.fields.description,
             tags: asset.metadata.tags
         }));
+
+    return Promise.all(pictures);
 };
 
 type QueryFnType = typeof getPictures;

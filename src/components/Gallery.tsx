@@ -7,9 +7,9 @@ import { FilterButton } from './FilterButton';
 import clsx from 'clsx';
 
 export const Gallery = () => {
-    const [query, setQuery] = useState<string[]>([]);
+    const [filters, setFilters] = useState<string[]>([]);
     const { data, isError } = usePictures({
-        query,
+        query: filters,
         config: {
             staleTime: 60 * 60 * 1000,
             keepPreviousData: true
@@ -30,45 +30,45 @@ export const Gallery = () => {
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <button
                     className="w-fit p-2 m-0.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
-                    onClick={() => setQuery([])}
+                    onClick={() => setFilters([])}
                 >
                     X
                 </button>
                 <FilterButton
                     tag="dress"
                     text="Dresses • שמלות • فساتين"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
                 <FilterButton
                     tag="skirt"
                     text="Skirts • חצאיות • التنورات"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
                 <FilterButton
                     tag="shirt"
                     text="Shirts • חולצות • القمصان"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
                 <FilterButton
                     tag="accessory"
                     text="Accessories • אביזרים • اكسسوارات"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
                 <FilterButton
                     tag="shoes"
                     text="Shoes • נעליים • الاحذيه"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
                 <FilterButton
                     tag="jewelry"
                     text="Jewelry • תכשיטים • المجوهرات"
-                    query={query}
-                    setQuery={setQuery}
+                    query={filters}
+                    setQuery={setFilters}
                 />
             </div>
 
@@ -76,10 +76,10 @@ export const Gallery = () => {
                 {data?.length === 0 && <div className="text-teal-800 my-20">No products found</div>}
 
                 {data?.map((picture) => (
-                    <div
+                    <button
                         key={picture.id}
                         className={clsx(
-                            'p-2 basis-full',
+                            'p-2 basis-full hover:scale-105 hover:z-10',
                             picture.height > picture.width
                                 ? 'sm:basis-1/2 lg:basis-1/3'
                                 : 'sm:basis-full lg:basis-1/2'
@@ -100,12 +100,15 @@ export const Gallery = () => {
                         />
 
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
-                            <h3 className="text-center text-lg">{picture.title}</h3>
+                            <h3 className="text-center text-lg">
+                                {picture.title_en && `${picture.title_en} • `}
+                                {picture.title}
+                            </h3>
                             {picture.price && (
                                 <p className="text-center text-sm">₪{picture.price}</p>
                             )}
                         </div>
-                    </div>
+                    </button>
                 ))}
             </div>
         </>
