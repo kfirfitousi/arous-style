@@ -18,20 +18,19 @@ const Home: NextPage = () => {
 
             <main className="h-full md:h-screen w-full flex flex-col-reverse md:flex-row">
                 {/* Left/Bottom Side */}
-                <section className="flex-grow bg-[#B0D0C6] sm:overflow-y-scroll">
+                <section className="min-w-[50%] bg-[#B0D0C6] sm:overflow-y-scroll">
                     <Gallery />
                 </section>
 
                 {/* Right/Top Side */}
-                <section className="md:max-w-xl flex flex-col items-center bg-white sm:overflow-y-scroll">
+                <section className="md:max-w-2xl flex flex-col items-center bg-white sm:overflow-y-scroll">
                     <div className="w-full">
                         <Image
                             src="/arous_banner.webp"
                             alt="Arous Style"
                             width={1115}
                             height={721}
-                            // layout="responsive"
-                            objectFit="fill"
+                            // objectFit="cover"
                         />
                     </div>
 

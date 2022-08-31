@@ -28,9 +28,15 @@ export const Gallery = () => {
     return (
         <>
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
+                <button
+                    className="w-fit p-2 m-0.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
+                    onClick={() => setQuery([])}
+                >
+                    X
+                </button>
                 <FilterButton
-                    tag="shoes"
-                    text="Shoes • נעליים • الاحذيه"
+                    tag="dress"
+                    text="Dresses • שמלות • فساتين"
                     query={query}
                     setQuery={setQuery}
                 />
@@ -41,8 +47,20 @@ export const Gallery = () => {
                     setQuery={setQuery}
                 />
                 <FilterButton
+                    tag="shirt"
+                    text="Shirts • חולצות • القمصان"
+                    query={query}
+                    setQuery={setQuery}
+                />
+                <FilterButton
                     tag="accessory"
                     text="Accessories • אביזרים • اكسسوارات"
+                    query={query}
+                    setQuery={setQuery}
+                />
+                <FilterButton
+                    tag="shoes"
+                    text="Shoes • נעליים • الاحذيه"
                     query={query}
                     setQuery={setQuery}
                 />
