@@ -27,7 +27,7 @@ export const Gallery = () => {
 
     return (
         <>
-            <div className="flex flex-row justify-center space-x-2 mt-3 px-2">
+            <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <FilterButton
                     tag="shoes"
                     text="Shoes • נעליים • الاحذيه"
@@ -35,14 +35,14 @@ export const Gallery = () => {
                     setQuery={setQuery}
                 />
                 <FilterButton
-                    tag="accessory"
-                    text="Accessories • אביזרים • اكسسوارات"
+                    tag="skirt"
+                    text="Skirts • חצאיות • التنورات"
                     query={query}
                     setQuery={setQuery}
                 />
                 <FilterButton
-                    tag="skirt"
-                    text="Skirts • חצאיות • التنورات"
+                    tag="accessory"
+                    text="Accessories • אביזרים • اكسسوارات"
                     query={query}
                     setQuery={setQuery}
                 />
