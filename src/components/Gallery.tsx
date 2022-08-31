@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { usePictures } from '@/hooks/getPictures';
 import { contentfulLoader } from '@delicious-simplicity/next-image-contentful-loader';
+import clsx from 'clsx';
 
 import Image from 'next/image';
+import ClearSVG from 'public/clear.svg';
 import { FilterButton } from './FilterButton';
-import clsx from 'clsx';
 
 export const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
@@ -29,46 +30,46 @@ export const Gallery = () => {
         <>
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <button
-                    className="w-fit p-2 m-0.5 rounded-lg text-sm sm:text-base bg-teal-50 hover:bg-teal-100 text-teal-800"
+                    className="w-fit px-1 m-0.5 leading-3 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
                     onClick={() => setFilters([])}
                 >
-                    X
+                    <Image src={ClearSVG} alt="Clear Filters" width={20} height={20} />
                 </button>
                 <FilterButton
                     tag="dress"
                     text="Dresses • שמלות • فساتين"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('dress')}
+                    setFilters={setFilters}
                 />
                 <FilterButton
                     tag="skirt"
                     text="Skirts • חצאיות • التنورات"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('skirt')}
+                    setFilters={setFilters}
                 />
                 <FilterButton
                     tag="shirt"
                     text="Shirts • חולצות • القمصان"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('shirt')}
+                    setFilters={setFilters}
                 />
                 <FilterButton
                     tag="accessory"
                     text="Accessories • אביזרים • اكسسوارات"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('accessory')}
+                    setFilters={setFilters}
                 />
                 <FilterButton
                     tag="shoes"
                     text="Shoes • נעליים • الاحذيه"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('shoes')}
+                    setFilters={setFilters}
                 />
                 <FilterButton
                     tag="jewelry"
                     text="Jewelry • תכשיטים • المجوهرات"
-                    query={filters}
-                    setQuery={setFilters}
+                    active={filters.includes('jewelry')}
+                    setFilters={setFilters}
                 />
             </div>
 

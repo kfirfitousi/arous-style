@@ -1,28 +1,30 @@
+import type { SetStateAction } from 'react';
+
 import clsx from 'clsx';
 
 type FilterButtonProps = {
     tag: string;
     text: string;
-    query: string[];
-    setQuery: (query: string[]) => void;
+    active: boolean;
+    setFilters: (value: SetStateAction<string[]>) => void;
 };
 
-export const FilterButton = ({ tag, text, query, setQuery }: FilterButtonProps) => {
+export const FilterButton = ({ tag, text, active, setFilters }: FilterButtonProps) => {
     const handleFilter = (filter: string) => {
-        if (query.includes(filter)) {
-            setQuery(query.filter((f) => f !== filter));
-        } else {
-            setQuery([...query, filter]);
-        }
+        setFilters((activeFilters) => {
+            if (activeFilters.includes(filter)) {
+                return activeFilters.filter((f) => f !== filter);
+            }
+
+            return [...activeFilters, filter];
+        });
     };
 
     return (
         <button
             className={clsx(
                 'w-fit m-0.5 p-2 rounded-lg text-xs sm:text-base',
-                query.includes(tag)
-                    ? 'bg-teal-500 text-teal-50'
-                    : 'bg-teal-50 hover:bg-teal-100 text-teal-800'
+                active ? 'bg-teal-500 text-teal-50' : 'bg-teal-50 hover:bg-teal-100 text-teal-800'
             )}
             onClick={() => handleFilter(tag)}
         >
