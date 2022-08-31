@@ -29,7 +29,7 @@ export const Gallery = () => {
         <>
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <button
-                    className="w-fit p-2 m-0.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
+                    className="w-fit p-2 m-0.5 rounded-lg text-sm sm:text-base bg-teal-50 hover:bg-teal-100 text-teal-800"
                     onClick={() => setFilters([])}
                 >
                     X
@@ -72,7 +72,7 @@ export const Gallery = () => {
                 />
             </div>
 
-            <div className="flex flex-row flex-wrap justify-center items-center mt-4 px-4">
+            <div className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
                 {data?.length === 0 && <div className="text-teal-800 my-20">No products found</div>}
 
                 {data?.map((picture) => (
@@ -96,16 +96,16 @@ export const Gallery = () => {
                             alt={picture.title}
                             layout="responsive"
                             loading="lazy"
-                            className="rounded-t-lg"
+                            className="rounded-t-lg bg-teal-50"
                         />
 
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
-                            <h3 className="text-center text-lg">
+                            <h3 className="text-center text-lg px-0.5">
                                 {picture.title_en && `${picture.title_en} • `}
                                 {picture.title}
                             </h3>
                             {picture.price && (
-                                <p className="text-center text-sm">₪{picture.price}</p>
+                                <p className="text-center text-sm pb-1">₪{picture.price}</p>
                             )}
                         </div>
                     </button>

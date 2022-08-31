@@ -3,6 +3,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Gallery } from '~/Gallery';
+import { Socials } from '~/Socials';
+
+import LocationSVG from 'public/location.svg';
 
 const Home: NextPage = () => {
     return (
@@ -30,13 +33,12 @@ const Home: NextPage = () => {
                             alt="Arous Style"
                             width={1115}
                             height={721}
-                            // objectFit="cover"
                         />
                     </div>
 
-                    <div className="mt-5">03-657-2714 \ arouselbaharorg@gmail.com</div>
+                    <Socials />
 
-                    <div className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-10 mb-4 sm:mb-0">
+                    <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8">
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">Arous Elbahar</p>
                             <p className="mt-4">
@@ -45,7 +47,10 @@ const Home: NextPage = () => {
                                 esse aspernatur quibusdam, maiores laudantium suscipit ratione ipsa
                                 rem expedita qui neque?
                             </p>
-                            <p className="mt-4">Pierre Mendes France 19, Jaffa</p>
+                            <div className="mt-4">
+                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
+                                <span className="ml-1">Pierre Mendes France 19, Jaffa</span>
+                            </div>
                         </div>
 
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
@@ -55,7 +60,10 @@ const Home: NextPage = () => {
                                 وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
                                 السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،
                             </p>
-                            <p className="mt-4">بيير مندس فرانس 19, يافا</p>
+                            <div className="mt-4">
+                                <span className="mr-1">بيير مندس فرانس 19, يافا</span>
+                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
+                            </div>
                         </div>
 
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
@@ -65,9 +73,12 @@ const Home: NextPage = () => {
                                 אדנדום סילקוף, מרגשי ומרגשח. עמחליף נולום ארווס סאפיאן - פוסיליס
                                 קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר,
                             </p>
-                            <p className="mt-4">פייר מנדס פרנס 19, יפו</p>
+                            <div className="mt-4">
+                                <span className="mr-1">פייר מנדס פרנס 19, יפו</span>
+                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </section>
             </main>
         </>
