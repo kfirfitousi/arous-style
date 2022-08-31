@@ -26,7 +26,7 @@ const Home: NextPage = () => {
                 </section>
 
                 {/* Right/Top Side */}
-                <section className="md:max-w-2xl flex flex-col items-center bg-white sm:overflow-y-scroll">
+                <section className="md:max-w-2xl flex flex-col items-center bg-green-50 sm:overflow-y-scroll">
                     <div className="w-full">
                         <Image
                             src="/arous_banner.webp"
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
 
                     <Socials />
 
-                    <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8">
+                    <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8 mb-4 sm:mb-0 text-teal-800">
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">Arous Elbahar</p>
                             <p className="mt-4">
@@ -60,9 +60,9 @@ const Home: NextPage = () => {
                                 وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
                                 السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،
                             </p>
-                            <div className="mt-4">
-                                <span className="mr-1">بيير مندس فرانس 19, يافا</span>
+                            <div className="mt-4" dir="rtl">
                                 <Image src={LocationSVG} alt="Location" width={15} height={15} />
+                                <span className="mr-1">بيير مندس فرانس 19, يافا</span>
                             </div>
                         </div>
 
@@ -73,9 +73,9 @@ const Home: NextPage = () => {
                                 אדנדום סילקוף, מרגשי ומרגשח. עמחליף נולום ארווס סאפיאן - פוסיליס
                                 קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר,
                             </p>
-                            <div className="mt-4">
-                                <span className="mr-1">פייר מנדס פרנס 19, יפו</span>
+                            <div className="mt-4" dir="rtl">
                                 <Image src={LocationSVG} alt="Location" width={15} height={15} />
+                                <span className="mr-1">פייר מנדס פרנס 19, יפו</span>
                             </div>
                         </div>
                     </section>

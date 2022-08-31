@@ -6,7 +6,7 @@ import InstagramSVG from 'public/instagram.svg';
 
 export const Socials = () => {
     return (
-        <div className="flex flex-row flex-wrap justify-center mt-5">
+        <div className="flex flex-row flex-wrap justify-center mt-5 text-teal-800">
             <div className="flex flex-row items-center space-x-1 px-4">
                 <Image src={PhoneSVG} alt="Phone" width={18} height={18} />
                 <span className="text-lg">03-657-2714</span>
