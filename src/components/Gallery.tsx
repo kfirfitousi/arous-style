@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePictures } from '@/hooks/getPictures';
+import { useProducts } from '@/hooks/getProducts';
 import { contentfulLoader } from '@delicious-simplicity/next-image-contentful-loader';
 import clsx from 'clsx';
 
@@ -9,11 +9,9 @@ import { FilterButton } from './FilterButton';
 
 export const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
-    const { data, isError } = usePictures({
-        query: filters,
+    const { data, isError } = useProducts({
         config: {
-            staleTime: 60 * 60 * 1000,
-            keepPreviousData: true
+            staleTime: 60 * 60 * 1000
         }
     });
 
@@ -73,45 +71,50 @@ export const Gallery = () => {
                 />
             </div>
 
-            <div className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
+            <section className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
                 {data?.length === 0 && <div className="text-teal-800 my-20">No products found</div>}
 
-                {data?.map((picture) => (
-                    <button
-                        key={picture.id}
-                        className={clsx(
-                            'p-2 basis-full hover:scale-105 hover:z-10',
-                            picture.height > picture.width
-                                ? 'sm:basis-1/2 lg:basis-1/3'
-                                : 'sm:basis-full lg:basis-1/2'
-                        )}
-                    >
-                        <Image
-                            loader={(props) =>
-                                contentfulLoader(props, { fm: 'jpg', fl: 'progressive', q: 50 })
-                            }
-                            src={picture.url}
-                            quality={50}
-                            width={picture.width}
-                            height={picture.height}
-                            alt={picture.title}
-                            layout="responsive"
-                            loading="lazy"
-                            className="rounded-t-lg bg-teal-50"
-                        />
-
-                        <div className="text-teal-700 bg-teal-50 rounded-b-lg">
-                            <h3 className="text-center text-lg px-0.5">
-                                {picture.title_en && `${picture.title_en} • `}
-                                {picture.title}
-                            </h3>
-                            {picture.price && (
-                                <p className="text-center text-sm pb-1">₪{picture.price}</p>
+                {data
+                    ?.filter(
+                        (product) =>
+                            !filters.length || product.tags.some((tag) => filters.includes(tag.id))
+                    )
+                    .map((product) => (
+                        <button
+                            key={product.id}
+                            className={clsx(
+                                'p-2 basis-full hover:scale-105 hover:z-10',
+                                product.pictures[0].width > product.pictures[0].height
+                                    ? 'sm:basis-1/2 lg:basis-1/3'
+                                    : 'sm:basis-full lg:basis-1/2'
                             )}
-                        </div>
-                    </button>
-                ))}
-            </div>
+                        >
+                            <Image
+                                loader={(props) =>
+                                    contentfulLoader(props, { fm: 'jpg', fl: 'progressive', q: 50 })
+                                }
+                                src={product.pictures[0].url}
+                                quality={50}
+                                width={product.pictures[0].width}
+                                height={product.pictures[0].height}
+                                alt={product.title}
+                                layout="responsive"
+                                loading="lazy"
+                                className="rounded-t-lg bg-teal-50"
+                            />
+
+                            <div className="text-teal-700 bg-teal-50 rounded-b-lg">
+                                <h3 className="text-center text-lg px-0.5">
+                                    {product.title_en && `${product.title_en} • `}
+                                    {product.title}
+                                </h3>
+                                {product.price && (
+                                    <p className="text-center text-sm pb-1">₪{product.price}</p>
+                                )}
+                            </div>
+                        </button>
+                    ))}
+            </section>
         </>
     );
 };
