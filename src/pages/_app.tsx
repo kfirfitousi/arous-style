@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import '@/styles/globals.css';
 
-const PastaQuiz = ({ Component, pageProps }: AppProps) => {
+const ArousStyle = ({ Component, pageProps }: AppProps) => {
     return (
         <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
@@ -18,4 +18,4 @@ const PastaQuiz = ({ Component, pageProps }: AppProps) => {
     );
 };
 
-export default PastaQuiz;
+export default ArousStyle;

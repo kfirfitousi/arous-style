@@ -1,5 +1,6 @@
 import type { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
-import type { EntryFields, Asset, TagLink } from 'contentful';
+import type { EntryFields, Asset } from 'contentful';
+import type { Product } from '@/types';
 
 import { useQuery } from '@tanstack/react-query';
 import { client } from '@/lib/contentful';
@@ -8,20 +9,6 @@ type ProductEntryFields = {
     title: EntryFields.Symbol;
     price: EntryFields.Integer;
     pictures: Asset[];
-};
-
-type Product = {
-    id: string;
-    title: string;
-    title_en: string;
-    price: number;
-    tags: TagLink[];
-    pictures: {
-        id: string;
-        url: string;
-        width: number;
-        height: number;
-    }[];
 };
 
 export const getProducts = async (): Promise<Product[]> => {
