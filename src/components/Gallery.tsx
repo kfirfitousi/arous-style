@@ -42,7 +42,7 @@ export const Gallery = () => {
     );
 
     return (
-        <>
+        <section className="w-full h-full">
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <button
                     className="w-fit px-1 m-0.5 leading-3 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
@@ -144,6 +144,6 @@ export const Gallery = () => {
                 isOpen={slideoverOpen}
                 onClose={() => setSlideoverOpen(false)}
             />
-        </>
+        </section>
     );
 };

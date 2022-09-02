@@ -75,70 +75,61 @@ export const ProductSlideover = ({ product, isOpen, onClose }: ProductModalProps
 
                                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                                             <div className="absolute inset-0 px-4 sm:px-6">
-                                                {product && (
-                                                    <section className="h-full flex flex-col items-center">
-                                                        <div className="relative w-full h-full max-h-[50%] mt-1">
-                                                            <Image
-                                                                loader={(props) =>
-                                                                    contentfulLoader(props, {
-                                                                        fm: 'jpg',
-                                                                        fl: 'progressive',
-                                                                        q: 50
-                                                                    })
-                                                                }
-                                                                src={
-                                                                    product.pictures[
-                                                                        selectedPictureNumber
-                                                                    ].url
-                                                                }
-                                                                alt={product.title}
-                                                                quality={50}
-                                                                layout="fill"
-                                                                objectFit="scale-down"
-                                                                priority
-                                                            />
-                                                        </div>
+                                                <section className="h-full flex flex-col items-center">
+                                                    <div className="relative w-full h-full max-h-[50%] mt-1">
+                                                        <Image
+                                                            loader={(props) =>
+                                                                contentfulLoader(props, {
+                                                                    fm: 'jpg',
+                                                                    fl: 'progressive',
+                                                                    q: 50
+                                                                })
+                                                            }
+                                                            src={
+                                                                product.pictures[
+                                                                    selectedPictureNumber
+                                                                ]?.url
+                                                            }
+                                                            alt={product.title}
+                                                            quality={50}
+                                                            layout="fill"
+                                                            objectFit="scale-down"
+                                                            priority
+                                                        />
+                                                    </div>
 
-                                                        <div className="p-2 flex flex-row flex-wrap items-center justify-center mt-1">
-                                                            {product.pictures.map(
-                                                                (picture, index) => (
-                                                                    <button
-                                                                        key={picture.id}
-                                                                        className="relative w-14 h-14 m-0.5"
-                                                                        onClick={() => {
-                                                                            setSelectedPictureNumber(
-                                                                                index
-                                                                            );
-                                                                        }}
-                                                                    >
-                                                                        <Image
-                                                                            loader={(props) =>
-                                                                                contentfulLoader(
-                                                                                    props,
-                                                                                    {
-                                                                                        fm: 'jpg',
-                                                                                        fl: 'progressive',
-                                                                                        q: 50
-                                                                                    }
-                                                                                )
-                                                                            }
-                                                                            src={picture.url}
-                                                                            alt={product.title}
-                                                                            quality={50}
-                                                                            layout="fill"
-                                                                            objectFit="cover"
-                                                                            className="bg-teal-50 rounded-lg"
-                                                                        />
-                                                                    </button>
-                                                                )
-                                                            )}
-                                                        </div>
+                                                    <div className="p-2 flex flex-row flex-wrap items-center justify-center mt-1">
+                                                        {product.pictures.map((picture, index) => (
+                                                            <button
+                                                                key={picture.id}
+                                                                className="relative w-14 h-14 m-0.5"
+                                                                onClick={() => {
+                                                                    setSelectedPictureNumber(index);
+                                                                }}
+                                                            >
+                                                                <Image
+                                                                    loader={(props) =>
+                                                                        contentfulLoader(props, {
+                                                                            fm: 'jpg',
+                                                                            fl: 'progressive',
+                                                                            q: 50
+                                                                        })
+                                                                    }
+                                                                    src={picture.url}
+                                                                    alt={product.title}
+                                                                    quality={50}
+                                                                    layout="fill"
+                                                                    objectFit="cover"
+                                                                    className="bg-teal-50 rounded-lg"
+                                                                />
+                                                            </button>
+                                                        ))}
+                                                    </div>
 
-                                                        <h2 className="text-lg text-teal-800">
-                                                            Contact us - יצירת קשר - اتصل بنا
-                                                        </h2>
-                                                    </section>
-                                                )}
+                                                    <h2 className="text-lg text-teal-800">
+                                                        Contact us - יצירת קשר - اتصل بنا
+                                                    </h2>
+                                                </section>
                                             </div>
                                         </div>
                                     </div>

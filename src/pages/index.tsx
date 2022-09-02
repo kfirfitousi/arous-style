@@ -1,11 +1,14 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
+
+import { dehydrate } from '@tanstack/react-query';
+import { queryClient } from '@/lib/react-query';
+import { getProducts } from '@/hooks/getProducts';
 
 import Head from 'next/head';
 import Image from 'next/image';
 import { Gallery } from '~/Gallery';
 import { Socials } from '~/Socials';
 
-// import LocationSVG from 'public/location.svg';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 
 const Home: NextPage = () => {
@@ -84,6 +87,18 @@ const Home: NextPage = () => {
             </main>
         </>
     );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+    await queryClient.prefetchQuery(['products'], () => getProducts(), {
+        staleTime: 60 * 60 * 1000
+    });
+
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient)
+        }
+    };
 };
 
 export default Home;

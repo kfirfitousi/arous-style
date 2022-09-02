@@ -10,7 +10,7 @@ type FilterButtonProps = {
 };
 
 export const FilterButton = ({ tag, text, active, setFilters }: FilterButtonProps) => {
-    const handleFilter = (filter: string) => {
+    const handleFilterSelect = (filter: string) => {
         setFilters((activeFilters) => {
             if (activeFilters.includes(filter)) {
                 return activeFilters.filter((f) => f !== filter);
@@ -26,7 +26,7 @@ export const FilterButton = ({ tag, text, active, setFilters }: FilterButtonProp
                 'w-fit m-0.5 p-2 rounded-lg text-xs sm:text-base',
                 active ? 'bg-teal-500 text-teal-50' : 'bg-teal-50 hover:bg-teal-100 text-teal-800'
             )}
-            onClick={() => handleFilter(tag)}
+            onClick={() => handleFilterSelect(tag)}
         >
             {text}
         </button>
