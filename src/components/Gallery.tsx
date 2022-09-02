@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useProducts } from '@/hooks/getProducts';
-import { contentfulLoader } from '@delicious-simplicity/next-image-contentful-loader';
+import { contentfulLoader } from '@/lib/contentful';
 import clsx from 'clsx';
 
 import Image from 'next/image';
-// import ClearSVG from 'public/clear.svg';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FilterButton } from './FilterButton';
 import { ProductSlideover } from './ProductSlideover';
@@ -19,6 +18,15 @@ export const Gallery = () => {
             staleTime: 60 * 60 * 1000
         }
     });
+
+    const filterTags = [
+        ['dress', 'Dresses • שמלות • فساتين'],
+        ['skirt', 'Skirts • חצאיות • التنورات'],
+        ['shirt', 'Shirts • חולצות • القمصان'],
+        ['accessory', 'Accessories • אביזרים • اكسسوارات'],
+        ['shoes', 'Shoes • נעליים • الاحذيه'],
+        ['jewelry', 'Jewelry • תכשיטים • المجوهرات']
+    ];
 
     if (isError) {
         return (
@@ -42,101 +50,69 @@ export const Gallery = () => {
     );
 
     return (
-        <section className="w-full h-full">
+        <section>
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
                 <button
                     className="w-fit px-1 m-0.5 leading-3 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
                     onClick={() => setFilters([])}
                 >
                     <XMarkIcon className="h-6 w-6" />
+                    <label className="sr-only">Clear filters</label>
                 </button>
-                <FilterButton
-                    tag="dress"
-                    text="Dresses • שמלות • فساتين"
-                    active={filters.includes('dress')}
-                    setFilters={setFilters}
-                />
-                <FilterButton
-                    tag="skirt"
-                    text="Skirts • חצאיות • التنورات"
-                    active={filters.includes('skirt')}
-                    setFilters={setFilters}
-                />
-                <FilterButton
-                    tag="shirt"
-                    text="Shirts • חולצות • القمصان"
-                    active={filters.includes('shirt')}
-                    setFilters={setFilters}
-                />
-                <FilterButton
-                    tag="accessory"
-                    text="Accessories • אביזרים • اكسسوارات"
-                    active={filters.includes('accessory')}
-                    setFilters={setFilters}
-                />
-                <FilterButton
-                    tag="shoes"
-                    text="Shoes • נעליים • الاحذيه"
-                    active={filters.includes('shoes')}
-                    setFilters={setFilters}
-                />
-                <FilterButton
-                    tag="jewelry"
-                    text="Jewelry • תכשיטים • المجوهرات"
-                    active={filters.includes('jewelry')}
-                    setFilters={setFilters}
-                />
+
+                {filterTags.map(([tag, label]) => (
+                    <FilterButton
+                        key={tag}
+                        tag={tag}
+                        label={label}
+                        active={filters.includes(tag)}
+                        setFilters={setFilters}
+                    />
+                ))}
             </div>
 
             <section className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
-                {filteredProducts.length === 0 && (
+                {!filteredProducts.length && (
                     <div className="text-teal-800 my-20">No products found</div>
                 )}
 
-                {filteredProducts
-                    .filter(
-                        (product) =>
-                            !filters.length || product.tags.some((tag) => filters.includes(tag.id))
-                    )
-                    .map((product) => (
-                        <button
-                            key={product.id}
-                            onClick={() => {
-                                setSelectedProductNumber(data.indexOf(product));
-                                setSlideoverOpen(true);
-                            }}
-                            className={clsx(
-                                'p-2 basis-full hover:scale-105 hover:z-10',
-                                product.pictures[0].height > product.pictures[0].width
-                                    ? 'sm:basis-1/2 lg:basis-1/3'
-                                    : 'sm:basis-full lg:basis-1/2'
-                            )}
-                        >
-                            <Image
-                                loader={(props) =>
-                                    contentfulLoader(props, { fm: 'jpg', fl: 'progressive', q: 50 })
-                                }
-                                src={product.pictures[0].url}
-                                width={product.pictures[0].width}
-                                height={product.pictures[0].height}
-                                alt={product.title}
-                                quality={50}
-                                layout="responsive"
-                                loading="lazy"
-                                className="rounded-t-lg bg-teal-50"
-                            />
+                {filteredProducts.map((product) => (
+                    <button
+                        key={product.id}
+                        onClick={() => {
+                            setSelectedProductNumber(data.indexOf(product));
+                            setSlideoverOpen(true);
+                        }}
+                        className={clsx(
+                            'p-2 basis-full hover:scale-105 hover:z-10',
+                            product.pictures[0].height > product.pictures[0].width
+                                ? 'sm:basis-1/2 lg:basis-1/3'
+                                : 'sm:basis-full lg:basis-1/2'
+                        )}
+                    >
+                        <Image
+                            loader={contentfulLoader}
+                            src={product.pictures[0].url}
+                            width={product.pictures[0].width}
+                            height={product.pictures[0].height}
+                            alt={product.title}
+                            quality={50}
+                            layout="responsive"
+                            loading="lazy"
+                            className="rounded-t-lg bg-teal-50"
+                        />
 
-                            <div className="text-teal-700 bg-teal-50 rounded-b-lg">
-                                <h3 className="text-center text-lg px-0.5">
-                                    {product.title_en && `${product.title_en} • `}
-                                    {product.title}
-                                </h3>
-                                {product.price && (
-                                    <p className="text-center text-sm pb-1">₪{product.price}</p>
-                                )}
-                            </div>
-                        </button>
-                    ))}
+                        <div className="text-teal-700 bg-teal-50 rounded-b-lg">
+                            <h3 className="text-center text-lg px-0.5">
+                                {product.title_en && `${product.title_en} • `}
+                                {product.title}
+                            </h3>
+                            {product.price && (
+                                <p className="text-center text-sm pb-1">₪{product.price}</p>
+                            )}
+                        </div>
+                    </button>
+                ))}
             </section>
 
             <ProductSlideover

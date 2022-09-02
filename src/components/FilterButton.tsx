@@ -4,12 +4,12 @@ import clsx from 'clsx';
 
 type FilterButtonProps = {
     tag: string;
-    text: string;
+    label: string;
     active: boolean;
     setFilters: (value: SetStateAction<string[]>) => void;
 };
 
-export const FilterButton = ({ tag, text, active, setFilters }: FilterButtonProps) => {
+export const FilterButton = ({ tag, label, active, setFilters }: FilterButtonProps) => {
     const handleFilterSelect = (filter: string) => {
         setFilters((activeFilters) => {
             if (activeFilters.includes(filter)) {
@@ -28,7 +28,7 @@ export const FilterButton = ({ tag, text, active, setFilters }: FilterButtonProp
             )}
             onClick={() => handleFilterSelect(tag)}
         >
-            {text}
+            {label}
         </button>
     );
 };

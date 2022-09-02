@@ -8,7 +8,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Gallery } from '~/Gallery';
 import { Socials } from '~/Socials';
-
 import { MapPinIcon } from '@heroicons/react/24/outline';
 
 const Home: NextPage = () => {

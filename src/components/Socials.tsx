@@ -1,8 +1,5 @@
 import Image from 'next/image';
-// import PhoneSVG from 'public/phone.svg';
-// import EmailSVG from 'public/email.svg';
-import { PhoneIcon,EnvelopeIcon } from '@heroicons/react/24/outline';
-
+import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import FacebookSVG from 'public/facebook.svg';
 import InstagramSVG from 'public/instagram.svg';
 
@@ -35,7 +32,6 @@ export const Socials = () => {
                 href="mailto:arouselbaharorg@gmail.com"
                 className="flex flex-row items-center space-x-1 px-4"
             >
-                {/* <Image src={EmailSVG} alt="Email" width={20} height={20} /> */}
                 <EnvelopeIcon className="w-6 h-6" />
                 <span className="text-lg">arouselbaharorg@gmail.com</span>
             </a>
