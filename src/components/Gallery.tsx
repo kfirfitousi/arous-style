@@ -96,7 +96,7 @@ export const Gallery = () => {
                             onClick={() => setSelectedProductNumber(data?.indexOf(product))}
                             className={clsx(
                                 'p-2 basis-full hover:scale-105 hover:z-10',
-                                product.pictures[0].width > product.pictures[0].height
+                                product.pictures[0].height > product.pictures[0].width
                                     ? 'sm:basis-1/2 lg:basis-1/3'
                                     : 'sm:basis-full lg:basis-1/2'
                             )}
