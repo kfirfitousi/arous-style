@@ -4,23 +4,21 @@ import { contentfulLoader } from '@delicious-simplicity/next-image-contentful-lo
 import clsx from 'clsx';
 
 import Image from 'next/image';
-import ClearSVG from 'public/clear.svg';
+// import ClearSVG from 'public/clear.svg';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FilterButton } from './FilterButton';
 import { ProductSlideover } from './ProductSlideover';
 
 export const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
-    const [selectedProductNumber, setSelectedProductNumber] = useState<number | null>(null);
+    const [selectedProductNumber, setSelectedProductNumber] = useState(0);
+    const [slideoverOpen, setSlideoverOpen] = useState(false);
+
     const { data, isLoading, isError } = useProducts({
         config: {
             staleTime: 60 * 60 * 1000
         }
     });
-
-    const filteredProducts =
-        data?.filter(
-            (product) => !filters.length || product.tags.some((tag) => filters.includes(tag.id))
-        ) || [];
 
     if (isError) {
         return (
@@ -39,6 +37,10 @@ export const Gallery = () => {
         );
     }
 
+    const filteredProducts = data.filter(
+        (product) => !filters.length || product.tags.some((tag) => filters.includes(tag.id))
+    );
+
     return (
         <>
             <div className="flex flex-row flex-wrap justify-center mt-3 px-2">
@@ -46,7 +48,7 @@ export const Gallery = () => {
                     className="w-fit px-1 m-0.5 leading-3 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800"
                     onClick={() => setFilters([])}
                 >
-                    <Image src={ClearSVG} alt="Clear Filters" width={20} height={20} />
+                    <XMarkIcon className="h-6 w-6" />
                 </button>
                 <FilterButton
                     tag="dress"
@@ -99,7 +101,10 @@ export const Gallery = () => {
                     .map((product) => (
                         <button
                             key={product.id}
-                            onClick={() => setSelectedProductNumber(data.indexOf(product))}
+                            onClick={() => {
+                                setSelectedProductNumber(data.indexOf(product));
+                                setSlideoverOpen(true);
+                            }}
                             className={clsx(
                                 'p-2 basis-full hover:scale-105 hover:z-10',
                                 product.pictures[0].height > product.pictures[0].width
@@ -135,9 +140,9 @@ export const Gallery = () => {
             </section>
 
             <ProductSlideover
-                product={selectedProductNumber !== null ? data[selectedProductNumber] : null}
-                isOpen={selectedProductNumber !== null}
-                onClose={() => setSelectedProductNumber(null)}
+                product={data[selectedProductNumber]}
+                isOpen={slideoverOpen}
+                onClose={() => setSlideoverOpen(false)}
             />
         </>
     );

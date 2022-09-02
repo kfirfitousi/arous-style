@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { Gallery } from '~/Gallery';
 import { Socials } from '~/Socials';
 
-import LocationSVG from 'public/location.svg';
+// import LocationSVG from 'public/location.svg';
+import { MapPinIcon } from '@heroicons/react/24/outline';
 
 const Home: NextPage = () => {
     return (
@@ -48,8 +49,8 @@ const Home: NextPage = () => {
                                 rem expedita qui neque?
                             </p>
                             <div className="mt-4">
-                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
-                                <span className="ml-1">Pierre Mendes France 19, Jaffa</span>
+                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
+                                <span className="ml-0.5">Pierre Mendes France 19, Jaffa</span>
                             </div>
                         </div>
 
@@ -61,8 +62,8 @@ const Home: NextPage = () => {
                                 السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،
                             </p>
                             <div className="mt-4" dir="rtl">
-                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
-                                <span className="mr-1">بيير مندس فرانس 19, يافا</span>
+                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
+                                <span className="mr-0.5">بيير مندس فرانس 19, يافا</span>
                             </div>
                         </div>
 
@@ -74,8 +75,8 @@ const Home: NextPage = () => {
                                 קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר,
                             </p>
                             <div className="mt-4" dir="rtl">
-                                <Image src={LocationSVG} alt="Location" width={15} height={15} />
-                                <span className="mr-1">פייר מנדס פרנס 19, יפו</span>
+                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
+                                <span className="mr-0.5">פייר מנדס פרנס 19, יפו</span>
                             </div>
                         </div>
                     </section>

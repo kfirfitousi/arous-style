@@ -8,7 +8,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 
 type ProductModalProps = {
-    product: Product | null;
+    product: Product;
     isOpen: boolean;
     onClose: () => void;
 };
@@ -64,17 +64,20 @@ export const ProductSlideover = ({ product, isOpen, onClose }: ProductModalProps
                                             </button>
                                         </div>
                                     </Transition.Child>
+
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                                         <div className="px-4 sm:px-6">
-                                            <Dialog.Title className="text-center text-lg font-medium text-gray-900">
-                                                Contact us - יצירת קשר - اتصل بنا
+                                            <Dialog.Title className="text-center text-lg font-medium text-teal-800">
+                                                {product.title_en && `${product.title_en} • `}
+                                                {product.title}
                                             </Dialog.Title>
                                         </div>
+
                                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                                             <div className="absolute inset-0 px-4 sm:px-6">
                                                 {product && (
-                                                    <section className="h-full flex flex-col">
-                                                        <div className="relative h-full max-h-[50%]">
+                                                    <section className="h-full flex flex-col items-center">
+                                                        <div className="relative w-full h-full max-h-[50%] mt-1">
                                                             <Image
                                                                 loader={(props) =>
                                                                     contentfulLoader(props, {
@@ -92,6 +95,7 @@ export const ProductSlideover = ({ product, isOpen, onClose }: ProductModalProps
                                                                 quality={50}
                                                                 layout="fill"
                                                                 objectFit="scale-down"
+                                                                priority
                                                             />
                                                         </div>
 
@@ -129,6 +133,10 @@ export const ProductSlideover = ({ product, isOpen, onClose }: ProductModalProps
                                                                 )
                                                             )}
                                                         </div>
+
+                                                        <h2 className="text-lg text-teal-800">
+                                                            Contact us - יצירת קשר - اتصل بنا
+                                                        </h2>
                                                     </section>
                                                 )}
                                             </div>
