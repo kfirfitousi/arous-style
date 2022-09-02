@@ -1,4 +1,11 @@
-import { TagLink } from "contentful";
+import { TagLink } from 'contentful';
+
+export type Picture = {
+    id: string;
+    url: string;
+    width: number;
+    height: number;
+};
 
 export type Product = {
     id: string;
@@ -6,10 +13,5 @@ export type Product = {
     title_en: string;
     price: number;
     tags: TagLink[];
-    pictures: {
-        id: string;
-        url: string;
-        width: number;
-        height: number;
-    }[];
+    pictures: Picture[];
 };
