@@ -6,13 +6,13 @@ type SlideoverProps = {
     children: React.ReactNode | React.ReactNode[];
     title: string;
     isOpen: boolean;
-    onClose: () => void;
+    handleClose: () => void;
 };
 
-const Slideover = ({ children, title, isOpen, onClose }: SlideoverProps) => {
+const Slideover = ({ children, title, isOpen, handleClose }: SlideoverProps) => {
     return (
         <Transition.Root show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={onClose}>
+            <Dialog as="div" className="relative z-10" onClose={handleClose}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-500"
@@ -51,7 +51,7 @@ const Slideover = ({ children, title, isOpen, onClose }: SlideoverProps) => {
                                             <button
                                                 type="button"
                                                 className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                                                onClick={() => onClose()}
+                                                onClick={() => handleClose()}
                                             >
                                                 <span className="sr-only">Close panel</span>
                                                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />

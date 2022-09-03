@@ -1,6 +1,6 @@
 import type { Product } from '@/types';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { contentfulLoader } from '@/lib/contentful';
 
 import Image from 'next/image';
@@ -9,17 +9,22 @@ import Slideover from './Slideover';
 type ProductSlideoverProps = {
     product: Product;
     isOpen: boolean;
-    onClose: () => void;
+    closeSlideover: () => void;
 };
 
-const ProductSlideover = ({ product, isOpen, onClose }: ProductSlideoverProps) => {
+const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverProps) => {
     const [selectedPictureNumber, setSelectedPictureNumber] = useState(0);
+
+    // reset selected picture when product changes
+    useEffect(() => {
+        setSelectedPictureNumber(0);
+    }, [product]);
 
     return (
         <Slideover
             isOpen={isOpen}
-            onClose={onClose}
             title={`${product.title_en && `${product.title_en} • `}${product.title}`}
+            handleClose={closeSlideover}
         >
             <div className="relative w-full h-full max-h-[50%] mt-1">
                 <Image

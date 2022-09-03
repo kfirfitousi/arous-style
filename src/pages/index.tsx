@@ -11,6 +11,7 @@ import Image from 'next/image';
 import Socials from '~/Socials';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 
+// import Gallery dynamically to reduce first load bundle size
 const Gallery = dynamic<{}>(() => import('~/Gallery'), {
     suspense: true
 });

@@ -10,10 +10,11 @@ import Image from 'next/image';
 import FilterButton from './FilterButton';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
+// import ProductSlideover dynamically to reduce first load bundle size
 const ProductSlideover = dynamic<{
     product: Product;
     isOpen: boolean;
-    onClose: () => void;
+    closeSlideover: () => void;
 }>(() => import('./ProductSlideover'), { ssr: false });
 
 const Gallery = () => {
@@ -130,7 +131,9 @@ const Gallery = () => {
             <ProductSlideover
                 product={data.find((product) => product.id === selectedProductId) || data[0]}
                 isOpen={slideoverOpen}
-                onClose={() => setSlideoverOpen(false)}
+                closeSlideover={() => {
+                    setSlideoverOpen(false);
+                }}
             />
         </section>
     );
