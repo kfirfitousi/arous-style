@@ -1,12 +1,20 @@
+import type { Product } from '@/types';
+
 import { useState } from 'react';
 import { useProducts } from '@/hooks/getProducts';
 import { contentfulLoader } from '@/lib/contentful';
+import dynamic from 'next/dynamic';
 import clsx from 'clsx';
 
 import Image from 'next/image';
 import FilterButton from './FilterButton';
-import ProductSlideover from './ProductSlideover';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+
+const ProductSlideover = dynamic<{
+    product: Product;
+    isOpen: boolean;
+    onClose: () => void;
+}>(() => import('./ProductSlideover'), { ssr: false });
 
 const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
