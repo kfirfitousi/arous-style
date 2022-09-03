@@ -103,9 +103,11 @@ export const Gallery = () => {
                         />
 
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
-                            <h3 className="text-center text-lg px-0.5">
-                                {product.title_en && `${product.title_en} • `}
-                                {product.title}
+                            <h3 className="text-center text-lg px-0.5 flex flex-row flex-wrap justify-center">
+                                {product.title_en && (
+                                    <span className="mr-0.5 whitespace-nowrap">{product.title_en} • </span>
+                                )}
+                                <span>{product.title}</span>
                             </h3>
                             {product.price && (
                                 <p className="text-center text-sm pb-1">₪{product.price}</p>
