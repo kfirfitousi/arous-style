@@ -3,12 +3,17 @@ import type { NextPage, GetStaticProps } from 'next';
 import { dehydrate } from '@tanstack/react-query';
 import { queryClient } from '@/lib/react-query';
 import { getProducts } from '@/hooks/getProducts';
+import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 
 import Head from 'next/head';
 import Image from 'next/image';
-import { Gallery } from '~/Gallery';
-import { Socials } from '~/Socials';
+import Socials from '~/Socials';
 import { MapPinIcon } from '@heroicons/react/24/outline';
+
+const Gallery = dynamic<{}>(() => import('~/Gallery'), {
+    suspense: true
+});
 
 const Home: NextPage = () => {
     return (
@@ -25,7 +30,15 @@ const Home: NextPage = () => {
             <main className="h-full md:h-screen w-full flex flex-col-reverse md:flex-row">
                 {/* Left/Bottom Side */}
                 <section className="min-w-[50%] bg-[#B0D0C6] sm:overflow-y-scroll">
-                    <Gallery />
+                    <Suspense
+                        fallback={
+                            <div className="h-full flex flex-col items-center justify-center text-teal-800">
+                                Loading...
+                            </div>
+                        }
+                    >
+                        <Gallery />
+                    </Suspense>
                 </section>
 
                 {/* Right/Top Side */}

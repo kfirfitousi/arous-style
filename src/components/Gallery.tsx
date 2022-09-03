@@ -4,11 +4,11 @@ import { contentfulLoader } from '@/lib/contentful';
 import clsx from 'clsx';
 
 import Image from 'next/image';
+import FilterButton from './FilterButton';
+import ProductSlideover from './ProductSlideover';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { FilterButton } from './FilterButton';
-import { ProductSlideover } from './ProductSlideover';
 
-export const Gallery = () => {
+const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
     const [selectedProductNumber, setSelectedProductNumber] = useState(0);
     const [slideoverOpen, setSlideoverOpen] = useState(false);
@@ -105,7 +105,9 @@ export const Gallery = () => {
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
                             <h3 className="text-center text-lg px-0.5 flex flex-row flex-wrap justify-center">
                                 {product.title_en && (
-                                    <span className="mr-0.5 whitespace-nowrap">{product.title_en} • </span>
+                                    <span className="mr-0.5 whitespace-nowrap">
+                                        {product.title_en} •{' '}
+                                    </span>
                                 )}
                                 <span>{product.title}</span>
                             </h3>
@@ -125,3 +127,5 @@ export const Gallery = () => {
         </section>
     );
 };
+
+export default Gallery;
