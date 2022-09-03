@@ -10,7 +10,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
-    const [selectedProductNumber, setSelectedProductNumber] = useState(0);
+    const [selectedProductId, setSelectedProductId] = useState('');
     const [slideoverOpen, setSlideoverOpen] = useState(false);
 
     const { data, isLoading, isError } = useProducts({
@@ -80,7 +80,7 @@ const Gallery = () => {
                     <button
                         key={product.id}
                         onClick={() => {
-                            setSelectedProductNumber(data.indexOf(product));
+                            setSelectedProductId(product.id);
                             setSlideoverOpen(true);
                         }}
                         className={clsx(
@@ -120,7 +120,7 @@ const Gallery = () => {
             </section>
 
             <ProductSlideover
-                product={data[selectedProductNumber]}
+                product={data.find((product) => product.id === selectedProductId) || data[0]}
                 isOpen={slideoverOpen}
                 onClose={() => setSlideoverOpen(false)}
             />
