@@ -4,7 +4,7 @@ import { contentfulLoader as cfLoader } from '@delicious-simplicity/next-image-c
 import { createClient, CreateClientParams } from 'contentful';
 
 const config: CreateClientParams = {
-    space: process.env.CONTENTFUL_SPACE_ID ?? '0',
+    space: 'ywc3ioqwvbsr',
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN ?? '0'
 };
 
