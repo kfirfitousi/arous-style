@@ -3,7 +3,7 @@ import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import FacebookSVG from 'public/facebook.svg';
 import InstagramSVG from 'public/instagram.svg';
 
-export const Socials = () => {
+const Socials = () => {
     return (
         <div className="flex flex-row flex-wrap justify-center mt-5 text-teal-800">
             <a href="tel:+97236573714" className="flex flex-row items-center space-x-1 px-4">
@@ -38,3 +38,5 @@ export const Socials = () => {
         </div>
     );
 };
+
+export default Socials;

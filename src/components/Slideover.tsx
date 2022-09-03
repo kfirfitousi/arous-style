@@ -9,7 +9,7 @@ type SlideoverProps = {
     onClose: () => void;
 };
 
-export const Slideover = ({ children, title, isOpen, onClose }: SlideoverProps) => {
+const Slideover = ({ children, title, isOpen, onClose }: SlideoverProps) => {
     return (
         <Transition.Root show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -83,3 +83,5 @@ export const Slideover = ({ children, title, isOpen, onClose }: SlideoverProps) 
         </Transition.Root>
     );
 };
+
+export default Slideover;

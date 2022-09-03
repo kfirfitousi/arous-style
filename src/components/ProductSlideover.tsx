@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { contentfulLoader } from '@/lib/contentful';
 
 import Image from 'next/image';
-import { Slideover } from './Slideover';
+import Slideover from './Slideover';
 
 type ProductSlideoverProps = {
     product: Product;
@@ -12,7 +12,7 @@ type ProductSlideoverProps = {
     onClose: () => void;
 };
 
-export const ProductSlideover = ({ product, isOpen, onClose }: ProductSlideoverProps) => {
+const ProductSlideover = ({ product, isOpen, onClose }: ProductSlideoverProps) => {
     const [selectedPictureNumber, setSelectedPictureNumber] = useState(0);
 
     return (
@@ -59,3 +59,5 @@ export const ProductSlideover = ({ product, isOpen, onClose }: ProductSlideoverP
         </Slideover>
     );
 };
+
+export default ProductSlideover;

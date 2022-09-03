@@ -9,7 +9,7 @@ type FilterButtonProps = {
     setFilters: (value: SetStateAction<string[]>) => void;
 };
 
-export const FilterButton = ({ tag, label, active, setFilters }: FilterButtonProps) => {
+const FilterButton = ({ tag, label, active, setFilters }: FilterButtonProps) => {
     const handleFilterSelect = (filter: string) => {
         setFilters((activeFilters) => {
             if (activeFilters.includes(filter)) {
@@ -32,3 +32,5 @@ export const FilterButton = ({ tag, label, active, setFilters }: FilterButtonPro
         </button>
     );
 };
+
+export default FilterButton;
