@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from 'next';
 
 import { dehydrate } from '@tanstack/react-query';
 import { queryClient } from '@/lib/react-query';
-import { getProducts } from '@/hooks/getProducts';
+import { getProducts } from '@/hooks/useProducts';
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 

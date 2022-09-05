@@ -5,6 +5,7 @@ import { contentfulLoader } from '@/lib/contentful';
 
 import Image from 'next/image';
 import Slideover from './Slideover';
+import ContactForm from './ContactForm';
 
 type ProductSlideoverProps = {
     product: Product;
@@ -60,7 +61,9 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                 ))}
             </div>
 
-            <h2 className="text-lg text-teal-800">Contact us - יצירת קשר - اتصل بنا</h2>
+            <h2 className="text-lg text-teal-800 underline">Contact us - יצירת קשר - اتصل بنا</h2>
+
+            <ContactForm product={product} />
         </Slideover>
     );
 };

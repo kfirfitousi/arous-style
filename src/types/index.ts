@@ -1,4 +1,5 @@
 import { TagLink } from 'contentful';
+import { z } from 'zod';
 
 export type Picture = {
     id: string;
@@ -15,3 +16,26 @@ export type Product = {
     tags: TagLink[];
     pictures: Picture[];
 };
+
+export type ContactFormFields = {
+    name: string;
+    phone: string;
+    message?: string;
+    product: Product;
+};
+
+export type ContactFormResponse = {
+    error: boolean;
+    message?: string;
+};
+
+export const ContactSchema = z
+    .object({
+        name: z.string().min(1, 'Name is required • נא להזין שם'),
+        phone: z
+            .string()
+            .min(1, 'Phone number is required • נא להזין מס׳ טלפון')
+            .min(8, 'Invalid phone number • מס׳ טלפון לא תקין'),
+        message: z.string().optional()
+    })
+    .required();

@@ -1,7 +1,7 @@
 import type { Product } from '@/types';
 
 import { useState } from 'react';
-import { useProducts } from '@/hooks/getProducts';
+import { useProducts } from '@/hooks/useProducts';
 import { contentfulLoader } from '@/lib/contentful';
 import dynamic from 'next/dynamic';
 import clsx from 'clsx';
@@ -19,8 +19,8 @@ const ProductSlideover = dynamic<{
 
 const Gallery = () => {
     const [filters, setFilters] = useState<string[]>([]);
-    const [selectedProductId, setSelectedProductId] = useState('');
     const [slideoverOpen, setSlideoverOpen] = useState(false);
+    const [selectedProductId, setSelectedProductId] = useState<string>('');
 
     const { data, isLoading, isError } = useProducts({
         config: {
