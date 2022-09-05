@@ -48,7 +48,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     return (
         <form className="flex flex-col">
-            <label htmlFor="name" className="mt-2 text-right text-teal-800">
+            <label htmlFor="name" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 <span className="text-red-500 text-center">*</span> Name - שם - الاسم
             </label>
             <input
@@ -61,7 +61,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 <span className="text-sm text-red-500 text-center">{errors.name.message}</span>
             )}
 
-            <label htmlFor="phone" className="mt-2 text-right text-teal-800">
+            <label htmlFor="phone" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 <span className="text-red-500">*</span> Phone number - מספר טלפון - رقم الهاتف
             </label>
             <input
@@ -74,10 +74,10 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 <span className="text-sm text-red-500 text-center">{errors.phone.message}</span>
             )}
 
-            <label htmlFor="message" className="mt-2 text-right text-teal-800">
+            <label htmlFor="message" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 Message - הודעה - رسالة
             </label>
-            <textarea className="border border-teal-800 rounded-lg p-1" {...register('message')} />
+            <textarea dir="rtl" className="border border-teal-800 rounded-lg p-1" {...register('message')} />
             {errors.message && <span className="text-red-500">{errors.message.message}</span>}
 
             <button

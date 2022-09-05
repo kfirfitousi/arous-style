@@ -27,7 +27,7 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
             title={`${product.title_en && `${product.title_en} • `}${product.title}`}
             handleClose={closeSlideover}
         >
-            <div className="relative w-full h-full max-h-[50%] mt-1">
+            <div className="relative w-full h-full max-h-[50%] sm:mt-1">
                 <Image
                     loader={contentfulLoader}
                     src={product.pictures[selectedPictureNumber].url}
@@ -43,7 +43,7 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                 {product.pictures.map((picture, index) => (
                     <button
                         key={picture.id}
-                        className="relative w-14 h-14 m-0.5"
+                        className="relative w-10 h-10 sm:w-14 sm:h-14 m-0.5"
                         onClick={() => {
                             setSelectedPictureNumber(index);
                         }}
