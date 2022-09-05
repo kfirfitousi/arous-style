@@ -8,7 +8,7 @@ import clsx from 'clsx';
 
 import Image from 'next/image';
 import FilterButton from './FilterButton';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 // import ProductSlideover dynamically to reduce first load bundle size
 const ProductSlideover = dynamic<{
@@ -40,8 +40,9 @@ const Gallery = () => {
     if (isError) {
         return (
             <div className="h-full flex flex-col items-center justify-center text-teal-800">
-                <p>Error occured while fetching Images.</p>
-                <p>Try refreshing the page.</p>
+                <XCircleIcon className="h-12 w-12" />
+                <p dir="rtl">התרחשה שגיאה. נסו לרענן את הדף.</p>
+                <p>Error occured, try refreshing the page.</p>
             </div>
         );
     }
@@ -82,7 +83,11 @@ const Gallery = () => {
 
             <section className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
                 {!filteredProducts.length && (
-                    <div className="text-teal-800 my-20">No products found</div>
+                    <div className="text-teal-800 my-20">
+                        <XCircleIcon className="h-12 w-12 mx-auto" />
+                        <p>לא נמצאו מוצרים</p>
+                        <p>No products found</p>
+                    </div>
                 )}
 
                 {filteredProducts.map((product) => (
