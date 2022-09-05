@@ -11,13 +11,11 @@ type FilterButtonProps = {
 
 const FilterButton = ({ tag, label, active, setFilters }: FilterButtonProps) => {
     const handleFilterSelect = (filter: string) => {
-        setFilters((activeFilters) => {
-            if (activeFilters.includes(filter)) {
-                return activeFilters.filter((f) => f !== filter);
-            }
-
-            return [...activeFilters, filter];
-        });
+        setFilters((activeFilters) =>
+            activeFilters.includes(filter)
+                ? activeFilters.filter((f) => f !== filter)
+                : [...activeFilters, filter]
+        );
     };
 
     return (

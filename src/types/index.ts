@@ -1,4 +1,3 @@
-import { TagLink } from 'contentful';
 import { z } from 'zod';
 
 export type Picture = {
@@ -13,7 +12,7 @@ export type Product = {
     title: string;
     title_en: string;
     price: number;
-    tags: TagLink[];
+    tags: string[];
     pictures: Picture[];
 };
 

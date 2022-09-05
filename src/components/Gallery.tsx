@@ -56,7 +56,7 @@ const Gallery = () => {
     }
 
     const filteredProducts = data.filter(
-        (product) => !filters.length || product.tags.some((tag) => filters.includes(tag.id))
+        (product) => !filters.length || product.tags.some((tag) => filters.includes(tag))
     );
 
     return (

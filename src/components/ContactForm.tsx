@@ -23,12 +23,8 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     const { isSuccess, isLoading, mutate } = useContact({
         config: {
-            onMutate: () => {
-                setSubmitError(false);
-            },
-            onError: (error) => {
-                setSubmitError(true);
-            }
+            onMutate: () => setSubmitError(false),
+            onError: () => setSubmitError(true)
         }
     });
 
@@ -51,10 +47,12 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     return (
         <form className="flex flex-col">
-            <h2 className="text-lg text-teal-800 underline">Contact us • יצירת קשר • اتصل بنا</h2>
+            <h2 className="text-lg text-center text-teal-800 underline">
+                Contact us • יצירת קשר • اتصل بنا
+            </h2>
 
-            <label htmlFor="name" className="mt-2 text-right text-sm sm:text-base text-teal-800">
-                <span className="text-red-500 text-center">*</span> Name • שם • الاسم
+            <label htmlFor="name" className="mt-1 text-right text-sm sm:text-base text-teal-800">
+                <span className="text-red-500">*</span> Name • שם • الاسم
             </label>
             <input
                 type="text"
@@ -66,7 +64,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 <span className="text-sm text-red-500 text-center">{errors.name.message}</span>
             )}
 
-            <label htmlFor="phone" className="mt-2 text-right text-sm sm:text-base text-teal-800">
+            <label htmlFor="phone" className="mt-1 text-right text-sm sm:text-base text-teal-800">
                 <span className="text-red-500">*</span> Phone number • מספר טלפון • رقم الهاتف
             </label>
             <input
@@ -79,7 +77,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 <span className="text-sm text-red-500 text-center">{errors.phone.message}</span>
             )}
 
-            <label htmlFor="message" className="mt-2 text-right text-sm sm:text-base text-teal-800">
+            <label htmlFor="message" className="mt-1 text-right text-sm sm:text-base text-teal-800">
                 Message • הודעה • رسالة
             </label>
             <textarea
@@ -91,7 +89,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
             <button
                 type="submit"
-                className="mt-3 bg-teal-800 text-white rounded-lg p-1"
+                className="mt-3 rounded-lg p-1 text-white bg-teal-800  hover:bg-teal-500"
                 disabled={isSubmitting || isLoading}
                 onClick={handleSubmit(onSubmit)}
             >
@@ -99,7 +97,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
             </button>
 
             {submitError && (
-                <span className="text-sm text-red-500 text-center">
+                <span className="text-sm text-red-500 text-center mt-1">
                     <p dir="rtl">התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.</p>
                     <p>An error occured while sending your message. Please try again.</p>
                 </span>

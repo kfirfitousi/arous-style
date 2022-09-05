@@ -19,7 +19,7 @@ export const getProducts = async (): Promise<Product[]> => {
         title: product.fields.title.he!,
         title_en: product.fields.title.en || '',
         price: product.fields.price!.he!,
-        tags: product.metadata.tags.map((tag) => tag.sys),
+        tags: product.metadata.tags.map((tag) => tag.sys.id),
         pictures: product.fields.pictures!.he!.map((pic) => ({
             id: pic.sys.id,
             url: `https:${pic.fields.file!.he!.url}`,
