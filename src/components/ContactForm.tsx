@@ -9,7 +9,7 @@ type ContactFormProps = {
 };
 
 const ContactForm = ({ product }: ContactFormProps) => {
-    const [submitError, setSubmitError] = useState('');
+    const [submitError, setSubmitError] = useState(false);
 
     const {
         register,
@@ -22,10 +22,10 @@ const ContactForm = ({ product }: ContactFormProps) => {
     const { isSuccess, isLoading, mutate } = useContact({
         config: {
             onMutate: () => {
-                setSubmitError('');
+                setSubmitError(false);
             },
             onError: (error) => {
-                setSubmitError(error.message);
+                setSubmitError(true);
             }
         }
     });
@@ -39,8 +39,8 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     if (isSuccess) {
         return (
-            <div className="flex flex-col items-center justify-center text-teal-800">
-                <p>פנייתך התקבלה בהצלחה!</p>
+            <div className="h-full flex flex-col items-center justify-center text-lg text-teal-800">
+                <p dir="rtl">פנייתך התקבלה בהצלחה!</p>
                 <p>Your message has been sent!</p>
             </div>
         );
@@ -86,12 +86,13 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 disabled={isSubmitting || isLoading}
                 onClick={handleSubmit(onSubmit)}
             >
-                Send - שלח - إرسال
+                {isSubmitting || isLoading ? '...' : 'Send - שלח - إرسال'}
             </button>
 
-            {submitError.length > 0 && (
+            {submitError && (
                 <span className="text-sm text-red-500 text-center">
-                    {submitError}
+                    <p dir="rtl">התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.</p>
+                    <p>An error occured while sending your message. Please try again.</p>
                 </span>
             )}
         </form>

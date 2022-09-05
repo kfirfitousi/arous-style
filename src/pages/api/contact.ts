@@ -11,39 +11,49 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+type Response = {
+    message: string;
+};
+
+const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     const { name, phone, message, product }: ContactFormFields = req.body;
 
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
-        return res.status(405).end('Method not allowed');
+        return res.status(405).json({ message: 'Method not allowed' });
     }
 
     const validation = ContactSchema.safeParse({ name, phone, message });
 
     if (!validation.success) {
-        return res.status(400).end(validation.error.message);
+        return res.status(400).json({ message: validation.error.message });
     }
 
     const email = await transporter.sendMail({
-        to: 'kfirp84@gmail.com',
-        from: 'kfirp84@gmail.com',
+        to: 'kfirfitousi@gmail.com',
+        from: 'kfirfitousi@gmail.com',
         subject: 'פנייה חדשה התקבלה באתר לקנות בסטייל',
-        text: `שם: ${name}
+        text: `
+            שם: ${name}
             מס׳ טלפון: ${phone}
             מוצר: ${product?.title}
-            הודעה: ${message || '-'}`,
-        html: `<p>שם: ${name}
-            מס׳ טלפון: ${phone}
-            מוצר: ${product?.title}</p>
-            <p>${message?.replace(/(?:\r\n|\r|\n)/g, '<br>')}</p>`
+            הודעה: ${message || '-'}
+        `,
+        html: `
+            <p dir="rtl">
+                שם: ${name}<br>
+                מס׳ טלפון: ${phone}<br>
+                מוצר: ${product?.title}
+            </p>
+            <p dir="rtl">${message?.replace(/(?:\r\n|\r|\n)/g, '<br>')}</p>
+        `
     });
 
     if (!email) {
-        return res.status(500).end('Email not sent');
+        return res.status(500).json({ message: 'Email not sent' });
     }
 
-    return res.status(200).end();
+    return res.status(200).json({ message: 'Email sent' });
 };
 
 export default handler;
