@@ -24,11 +24,6 @@ export type ContactFormFields = {
     product: Product;
 };
 
-export type ContactFormResponse = {
-    error: boolean;
-    message?: string;
-};
-
 export const ContactSchema = z
     .object({
         name: z.string().min(1, 'Name is required • נא להזין שם'),

@@ -1,5 +1,4 @@
-// import type { RoundResult, SubmitResponse } from '../types';
-import type { ContactFormResponse, Product } from '@/types';
+import type { Product } from '@/types';
 import type { MutationConfig } from '@/lib/react-query';
 
 import { useMutation } from '@tanstack/react-query';

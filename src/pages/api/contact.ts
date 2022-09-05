@@ -26,8 +26,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const email = await transporter.sendMail({
-        to: 'kfirfitousi@gmail.com',
-        from: 'kfirfitousi@gmail.com',
+        to: 'kfirp84@gmail.com',
+        from: 'kfirp84@gmail.com',
         subject: 'פנייה חדשה התקבלה באתר לקנות בסטייל',
         text: `שם: ${name}
             מס׳ טלפון: ${phone}
