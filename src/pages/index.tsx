@@ -72,7 +72,7 @@ const Home: NextPage = () => {
 
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">عروس البحر</p>
-                            <p className="mt-4">
+                            <p className="mt-4" dir="rtl">
                                 لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة
                                 وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
                                 السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
 
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">ערוס אלבחר</p>
-                            <p className="mt-4">
+                            <p className="mt-4" dir="rtl">
                                 לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולורס מונפרד
                                 אדנדום סילקוף, מרגשי ומרגשח. עמחליף נולום ארווס סאפיאן - פוסיליס
                                 קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר,

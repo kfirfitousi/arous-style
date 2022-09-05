@@ -1,17 +1,10 @@
-import type { Product } from '@/types';
+import type { ContactFormFields } from '@/types';
 import type { MutationConfig } from '@/lib/react-query';
 
 import { useMutation } from '@tanstack/react-query';
 import { axios } from '@/lib/axios';
 
-type SubmitParams = {
-    name: string;
-    phone: string;
-    message?: string;
-    product: Product;
-};
-
-export const sendMessage = (data: SubmitParams) => {
+export const sendMessage = (data: ContactFormFields) => {
     return axios.post('/api/contact', {
         ...data
     });

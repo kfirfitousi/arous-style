@@ -51,10 +51,10 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     return (
         <form className="flex flex-col">
-            <h2 className="text-lg text-teal-800 underline">Contact us - יצירת קשר - اتصل بنا</h2>
+            <h2 className="text-lg text-teal-800 underline">Contact us • יצירת קשר • اتصل بنا</h2>
 
             <label htmlFor="name" className="mt-2 text-right text-sm sm:text-base text-teal-800">
-                <span className="text-red-500 text-center">*</span> Name - שם - الاسم
+                <span className="text-red-500 text-center">*</span> Name • שם • الاسم
             </label>
             <input
                 type="text"
@@ -67,7 +67,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
             )}
 
             <label htmlFor="phone" className="mt-2 text-right text-sm sm:text-base text-teal-800">
-                <span className="text-red-500">*</span> Phone number - מספר טלפון - رقم الهاتف
+                <span className="text-red-500">*</span> Phone number • מספר טלפון • رقم الهاتف
             </label>
             <input
                 type="tel"
@@ -80,7 +80,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
             )}
 
             <label htmlFor="message" className="mt-2 text-right text-sm sm:text-base text-teal-800">
-                Message - הודעה - رسالة
+                Message • הודעה • رسالة
             </label>
             <textarea
                 dir="rtl"
@@ -95,7 +95,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 disabled={isSubmitting || isLoading}
                 onClick={handleSubmit(onSubmit)}
             >
-                {isSubmitting || isLoading ? '...' : 'Send - שלח - إرسال'}
+                {isSubmitting || isLoading ? '...' : 'Send • שלח • إرسال'}
             </button>
 
             {submitError && (
