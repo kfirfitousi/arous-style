@@ -27,10 +27,10 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
             title={`${product.title_en && `${product.title_en} • `}${product.title}`}
             handleClose={closeSlideover}
         >
-            <div className="relative w-full h-full max-h-[50%] sm:mt-1">
+            <div className="relative w-full h-full max-h-[50%]">
                 <Image
                     loader={contentfulLoader}
-                    src={product.pictures[selectedPictureNumber].url}
+                    src={product.pictures[selectedPictureNumber]?.url || product.pictures[0].url}
                     alt={product.title}
                     quality={50}
                     layout="fill"
