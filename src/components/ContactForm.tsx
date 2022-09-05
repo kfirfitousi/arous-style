@@ -4,6 +4,8 @@ import { useContact } from '@/hooks/useContact';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
+
 type ContactFormProps = {
     product: Product;
 };
@@ -40,6 +42,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
     if (isSuccess) {
         return (
             <div className="h-full flex flex-col items-center justify-center text-lg text-teal-800">
+                <CheckCircleIcon className="h-12 w-12" />
                 <p dir="rtl">פנייתך התקבלה בהצלחה!</p>
                 <p>Your message has been sent!</p>
             </div>
@@ -49,7 +52,6 @@ const ContactForm = ({ product }: ContactFormProps) => {
     return (
         <form className="flex flex-col">
             <h2 className="text-lg text-teal-800 underline">Contact us - יצירת קשר - اتصل بنا</h2>
-
 
             <label htmlFor="name" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 <span className="text-red-500 text-center">*</span> Name - שם - الاسم
@@ -80,7 +82,11 @@ const ContactForm = ({ product }: ContactFormProps) => {
             <label htmlFor="message" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 Message - הודעה - رسالة
             </label>
-            <textarea dir="rtl" className="border border-teal-800 rounded-lg p-1" {...register('message')} />
+            <textarea
+                dir="rtl"
+                className="border border-teal-800 rounded-lg p-1"
+                {...register('message')}
+            />
             {errors.message && <span className="text-red-500">{errors.message.message}</span>}
 
             <button
