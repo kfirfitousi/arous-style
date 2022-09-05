@@ -48,6 +48,9 @@ const ContactForm = ({ product }: ContactFormProps) => {
 
     return (
         <form className="flex flex-col">
+            <h2 className="text-lg text-teal-800 underline">Contact us - יצירת קשר - اتصل بنا</h2>
+
+
             <label htmlFor="name" className="mt-2 text-right text-sm sm:text-base text-teal-800">
                 <span className="text-red-500 text-center">*</span> Name - שם - الاسم
             </label>

@@ -61,8 +61,6 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                 ))}
             </div>
 
-            <h2 className="text-lg text-teal-800 underline">Contact us - יצירת קשר - اتصل بنا</h2>
-
             <ContactForm product={product} />
         </Slideover>
     );
