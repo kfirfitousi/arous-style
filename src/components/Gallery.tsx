@@ -67,13 +67,13 @@ const Gallery = () => {
                     onClick={() => setFilters([])}
                 >
                     <XMarkIcon className="h-6 w-6" />
-                    <label className="sr-only">Clear filters</label>
+                    <label className="sr-only">Clear filters • בטל סינון</label>
                 </button>
 
                 {filterTags.map(([tag, label]) => (
                     <FilterButton
                         key={tag}
-                        tag={tag}
+                        filter={tag}
                         label={label}
                         active={filters.includes(tag)}
                         setFilters={setFilters}
@@ -85,8 +85,8 @@ const Gallery = () => {
                 {!filteredProducts.length && (
                     <div className="text-teal-800 my-20">
                         <XCircleIcon className="h-12 w-12 mx-auto" />
-                        <p>לא נמצאו מוצרים</p>
-                        <p>No products found</p>
+                        <p>לא נמצאו מוצרים בקטגוריה זו</p>
+                        <p>No products found in this category</p>
                     </div>
                 )}
 
@@ -137,9 +137,7 @@ const Gallery = () => {
             <ProductSlideover
                 product={data.find((product) => product.id === selectedProductId) || data[0]}
                 isOpen={slideoverOpen}
-                closeSlideover={() => {
-                    setSlideoverOpen(false);
-                }}
+                closeSlideover={() => setSlideoverOpen(false)}
             />
         </section>
     );

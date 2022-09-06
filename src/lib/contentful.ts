@@ -5,7 +5,7 @@ import { createClient, CreateClientParams } from 'contentful';
 
 const config: CreateClientParams = {
     space: 'ywc3ioqwvbsr',
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN ?? '0'
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '0'
 };
 
 export const client = createClient(config).withAllLocales;

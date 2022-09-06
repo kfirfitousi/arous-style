@@ -17,9 +17,7 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
     const [selectedPictureNumber, setSelectedPictureNumber] = useState(0);
 
     // reset selected picture when product changes
-    useEffect(() => {
-        setSelectedPictureNumber(0);
-    }, [product]);
+    useEffect(() => setSelectedPictureNumber(0), [product]);
 
     return (
         <Slideover
@@ -44,9 +42,7 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                     <button
                         key={picture.id}
                         className="relative w-10 h-10 sm:w-14 sm:h-14 m-0.5"
-                        onClick={() => {
-                            setSelectedPictureNumber(index);
-                        }}
+                        onClick={() => setSelectedPictureNumber(index)}
                     >
                         <Image
                             loader={contentfulLoader}

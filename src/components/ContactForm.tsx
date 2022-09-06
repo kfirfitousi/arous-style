@@ -1,5 +1,4 @@
 import { ContactFormFields, ContactSchema, Product } from '@/types';
-import { useState } from 'react';
 import { useContact } from '@/hooks/useContact';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,8 +10,6 @@ type ContactFormProps = {
 };
 
 const ContactForm = ({ product }: ContactFormProps) => {
-    const [submitError, setSubmitError] = useState(false);
-
     const {
         register,
         handleSubmit,
@@ -21,12 +18,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
         resolver: zodResolver(ContactSchema)
     });
 
-    const { isSuccess, isLoading, mutate } = useContact({
-        config: {
-            onMutate: () => setSubmitError(false),
-            onError: () => setSubmitError(true)
-        }
-    });
+    const { isSuccess, isLoading, isError, mutate } = useContact();
 
     const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
         mutate({ ...data, product });
@@ -93,10 +85,14 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 {isSubmitting || isLoading ? '•••' : 'Send • שלח • إرسال'}
             </button>
 
-            {submitError && (
-                <span className="text-sm text-red-500 text-center mt-1">
-                    <p dir="rtl">התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.</p>
-                    <p>An error occured while sending your message. Please try again.</p>
+            {isError && (
+                <span className="flex flex-row text-sm mt-1 text-red-500">
+                    <p className="text-center">
+                        An error occured while sending your message. Please try again.
+                    </p>
+                    <p dir="rtl" className="text-center">
+                        התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.
+                    </p>
                 </span>
             )}
         </form>

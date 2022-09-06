@@ -1,12 +1,4 @@
 {
     "extends": "next/core-web-vitals",
-    "plugins": ["@next/next"],
-    "rules": {
-        "no-restricted-imports": [
-            "error",
-            {
-                "patterns": ["@/features/*/*"]
-            }
-        ]
-    }
+    "plugins": ["@next/next"]
 }
