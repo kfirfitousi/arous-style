@@ -29,10 +29,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
     });
 
     const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
-        mutate({
-            ...data,
-            product
-        });
+        mutate({ ...data, product });
     };
 
     if (isSuccess) {
@@ -93,7 +90,7 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 disabled={isSubmitting || isLoading}
                 onClick={handleSubmit(onSubmit)}
             >
-                {isSubmitting || isLoading ? '...' : 'Send • שלח • إرسال'}
+                {isSubmitting || isLoading ? '•••' : 'Send • שלח • إرسال'}
             </button>
 
             {submitError && (

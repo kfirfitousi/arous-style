@@ -35,7 +35,7 @@ type UseProductsOptions = {
     config?: QueryConfig<QueryFnType>;
 };
 
-export const useProducts = ({ config }: UseProductsOptions) => {
+export const useProducts = ({ config }: UseProductsOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['products'],
         queryFn: () => getProducts(),

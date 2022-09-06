@@ -104,17 +104,18 @@ const Gallery = () => {
                                 : 'sm:basis-full lg:basis-1/2'
                         )}
                     >
-                        <Image
-                            loader={contentfulLoader}
-                            src={product.pictures[0].url}
-                            width={product.pictures[0].width}
-                            height={product.pictures[0].height}
-                            alt={product.title}
-                            quality={50}
-                            layout="responsive"
-                            loading="lazy"
-                            className="rounded-t-lg bg-teal-50"
-                        />
+                        <div className="relative w-full h-80 sm:h-90">
+                            <Image
+                                loader={contentfulLoader}
+                                src={product.pictures[0].url}
+                                alt={product.title}
+                                layout="fill"
+                                objectFit="cover"
+                                quality={50}
+                                loading="lazy"
+                                className="rounded-t-lg bg-teal-50"
+                            />
+                        </div>
 
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
                             <h3 className="text-center text-lg px-0.5 flex flex-row flex-wrap justify-center">
