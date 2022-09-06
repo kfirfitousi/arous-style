@@ -6,23 +6,20 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 type ContactFormProps = {
-    product: Product;
+    productName: string;
 };
 
-const ContactForm = ({ product }: ContactFormProps) => {
+const ContactForm = ({ productName }: ContactFormProps) => {
     const {
         register,
         handleSubmit,
         formState: { errors, isSubmitting }
     } = useForm<ContactFormFields>({
-        resolver: zodResolver(ContactSchema)
+        resolver: zodResolver(ContactSchema),
+        defaultValues: { productName }
     });
 
     const { isSuccess, isLoading, isError, mutate } = useContact();
-
-    const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
-        mutate({ ...data, product });
-    };
 
     if (isSuccess) {
         return (
@@ -80,19 +77,15 @@ const ContactForm = ({ product }: ContactFormProps) => {
                 type="submit"
                 className="mt-3 rounded-lg p-1 text-white bg-teal-800  hover:bg-teal-500"
                 disabled={isSubmitting || isLoading}
-                onClick={handleSubmit(onSubmit)}
+                onClick={handleSubmit(async (data) => mutate({ ...data }))}
             >
                 {isSubmitting || isLoading ? '•••' : 'Send • שלח • إرسال'}
             </button>
 
             {isError && (
-                <span className="flex flex-row text-sm mt-1 text-red-500">
-                    <p className="text-center">
-                        An error occured while sending your message. Please try again.
-                    </p>
-                    <p dir="rtl" className="text-center">
-                        התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.
-                    </p>
+                <span className="flex flex-row text-sm text-center mt-1 text-red-500">
+                    <p>An error occured while sending your message. Please try again.</p>
+                    <p dir="rtl">התרחשה שגיאה בעת שליחת ההודעה. אנא נסו שנית.</p>
                 </span>
             )}
         </form>

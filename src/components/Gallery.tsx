@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useProducts } from '@/hooks/useProducts';
 import { contentfulLoader } from '@/lib/contentful';
 import dynamic from 'next/dynamic';
-import clsx from 'clsx';
 
 import Image from 'next/image';
 import FilterButton from './FilterButton';
@@ -97,12 +96,7 @@ const Gallery = () => {
                             setSelectedProductId(product.id);
                             setSlideoverOpen(true);
                         }}
-                        className={clsx(
-                            'p-2 basis-full hover:scale-105 hover:z-10',
-                            product.pictures[0].height > product.pictures[0].width
-                                ? 'sm:basis-1/2 lg:basis-1/3'
-                                : 'sm:basis-full lg:basis-1/2'
-                        )}
+                        className="p-2 basis-full hover:scale-105 sm:basis-1/2 lg:basis-1/3"
                     >
                         <div className="relative w-full h-80 sm:h-90">
                             <Image

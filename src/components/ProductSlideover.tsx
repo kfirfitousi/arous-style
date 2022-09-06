@@ -41,7 +41,7 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                 {product.pictures.map((picture, index) => (
                     <button
                         key={picture.id}
-                        className="relative w-10 h-10 sm:w-14 sm:h-14 m-0.5"
+                        className="relative w-10 h-10 sm:w-14 sm:h-14 m-0.5 rounded-lg hover:border-2 border-teal-800"
                         onClick={() => setSelectedPictureNumber(index)}
                     >
                         <Image
@@ -51,13 +51,13 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
                             quality={50}
                             layout="fill"
                             objectFit="cover"
-                            className="bg-teal-50 rounded-lg"
+                            className="bg-teal-50 rounded-lg hover:rounded-md"
                         />
                     </button>
                 ))}
             </div>
 
-            <ContactForm product={product} />
+            <ContactForm productName={product.title} />
         </Slideover>
     );
 };

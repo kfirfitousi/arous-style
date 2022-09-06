@@ -20,7 +20,11 @@ export type ContactFormFields = {
     name: string;
     phone: string;
     message?: string;
-    product: Product;
+    productName: string;
+};
+
+export type ContactResponse = {
+    message: string;
 };
 
 export const ContactSchema = z.object({
@@ -29,5 +33,6 @@ export const ContactSchema = z.object({
         .string()
         .min(1, 'Phone number is required • נא להזין מס׳ טלפון')
         .min(8, 'Invalid phone number • מס׳ טלפון לא תקין'),
-    message: z.string().optional()
+    message: z.string().optional(),
+    productName: z.string().optional()
 });

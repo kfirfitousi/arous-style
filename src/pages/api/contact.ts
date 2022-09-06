@@ -1,5 +1,5 @@
 import type { NextApiResponse, NextApiRequest } from 'next';
-import { ContactFormFields, ContactSchema } from '@/types';
+import { ContactFormFields, ContactResponse, ContactSchema } from '@/types';
 
 import nodemailer from 'nodemailer';
 
@@ -11,23 +11,24 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-type Response = {
-    message: string;
-};
-
-const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
-    const { name, phone, message, product }: ContactFormFields = req.body;
-
+const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse>) => {
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const validation = ContactSchema.safeParse({ name, phone, message });
+    const formData: ContactFormFields = req.body;
+    const validation = ContactSchema.safeParse(formData);
 
     if (!validation.success) {
-        return res.status(400).json({ message: validation.error.message });
+        return res.status(400).json({
+            message: validation.error.issues
+                .map((issue) => `${issue.path} - ${issue.message}.`)
+                .join(' ')
+        });
     }
+
+    const { name, phone, message, productName } = validation.data;
 
     const email = await transporter.sendMail({
         to: 'kfirfitousi@gmail.com',
@@ -36,16 +37,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
         text: `
             שם: ${name}
             מס׳ טלפון: ${phone}
-            מוצר: ${product?.title}
+            מוצר: ${productName || 'לא נבחר'}
             הודעה: ${message || '-'}
         `,
         html: `
             <p dir="rtl">
                 שם: ${name}<br>
                 מס׳ טלפון: ${phone}<br>
-                מוצר: ${product?.title}
+                מוצר: ${productName || 'לא נבחר'}<br>
+                הודעה: ${message?.replace(/(?:\r\n|\r|\n)/g, '<br>') || '-'}
             </p>
-            <p dir="rtl">${message?.replace(/(?:\r\n|\r|\n)/g, '<br>')}</p>
         `
     });
 
