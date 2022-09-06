@@ -1,6 +1,6 @@
-import { ContactFormFields, ContactSchema, Product } from '@/types';
+import { ContactFormFields, ContactSchema } from '@/types';
 import { useContact } from '@/hooks/useContact';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
@@ -13,7 +13,7 @@ const ContactForm = ({ productName }: ContactFormProps) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting }
+        formState: { errors }
     } = useForm<ContactFormFields>({
         resolver: zodResolver(ContactSchema),
         defaultValues: { productName }
@@ -76,10 +76,10 @@ const ContactForm = ({ productName }: ContactFormProps) => {
             <button
                 type="submit"
                 className="mt-3 rounded-lg p-1 text-white bg-teal-800  hover:bg-teal-500"
-                disabled={isSubmitting || isLoading}
-                onClick={handleSubmit(async (data) => mutate({ ...data }))}
+                disabled={isLoading}
+                onClick={handleSubmit((data) => mutate(data))}
             >
-                {isSubmitting || isLoading ? '•••' : 'Send • שלח • إرسال'}
+                {isLoading ? '•••' : 'Send • שלח • إرسال'}
             </button>
 
             {isError && (

@@ -6,13 +6,15 @@ import { useQuery } from '@tanstack/react-query';
 import { client } from '@/lib/contentful';
 
 type ProductEntryFields = {
-    title: EntryFields.Symbol;
-    price: EntryFields.Integer;
+    title: EntryFields.Text;
+    price: EntryFields.Number;
     pictures: Asset[];
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-    const products = await client.getEntries<ProductEntryFields, 'he' | 'en'>();
+    const products = await client.getEntries<ProductEntryFields, 'he' | 'en'>({
+        content_type: 'product'
+    });
 
     return products.items.map((product) => ({
         id: product.sys.id,
@@ -38,7 +40,7 @@ type UseProductsOptions = {
 export const useProducts = ({ config }: UseProductsOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
         queryKey: ['products'],
-        queryFn: () => getProducts(),
+        queryFn: getProducts,
         ...config
     });
 };

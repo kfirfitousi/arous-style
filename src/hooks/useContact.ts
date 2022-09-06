@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import { axios } from '@/lib/axios';
 
 export const sendMessage = (data: ContactFormFields): Promise<ContactResponse> => {
-    return axios.post('/api/contact', { ...data });
+    return axios.post('/api/contact', data);
 };
 
 type UseContactOptions = {
