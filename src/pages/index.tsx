@@ -58,11 +58,12 @@ const Home: NextPage = () => {
                     <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8 mb-4 sm:mb-0 text-teal-800">
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">Arous Elbahar</p>
-                            <p className="mt-4">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis hic
-                                vitae vel eos similique repellendus distinctio, quos, consequatur
-                                esse aspernatur quibusdam, maiores laudantium suscipit ratione ipsa
-                                rem expedita qui neque?
+                            <p className="mt-4 text-sm">
+                                Arous Elbahar (Bride of the Sea) Association for Women in Jaffa is a
+                                non-profit women&apos;s organization, founded by a group of female
+                                Arab residents of Jaffa. Our mission is to provide Jaffa&apos;s with
+                                the tools and resources they need to make a positive difference in
+                                their lives - in the personal, economic, and community level.
                             </p>
                             <div className="mt-4">
                                 <MapPinIcon className="w-6 h-6 pb-1 inline" />
@@ -85,10 +86,12 @@ const Home: NextPage = () => {
 
                         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
                             <p className="text-xl underline sm:no-underline">ערוס אלבחר</p>
-                            <p className="mt-4" dir="rtl">
-                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולורס מונפרד
-                                אדנדום סילקוף, מרגשי ומרגשח. עמחליף נולום ארווס סאפיאן - פוסיליס
-                                קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר,
+                            <p className="mt-4 text-sm" dir="rtl">
+                                עמותת ערוס אלבחר (כלת הים) לנשים ביפו היא ארגון ללא מטרות רווח שנוסד
+                                על ידי קבוצה של נשים ערביות תושבות יפו. העמותה פועלת לקידום מעמדן
+                                ומעורבותן של נשים ביפו, ומספקת להן כלים ומשאבים על מנת לחולל שינוי
+                                חיובי בחייהן – מבחינה אישית, כלכלית וקהילתית - תוך הגברת מעורבותן
+                                הפעילה בקהילה ובשוק העבודה.
                             </p>
                             <div className="mt-4" dir="rtl">
                                 <MapPinIcon className="w-6 h-6 pb-1 inline" />
