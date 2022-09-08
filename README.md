@@ -1,8 +1,8 @@
 # Arous Style
 
-### Catalog for Arous Elbahar's second-hand store.
+### Online catalog for Arous Elbahar's second-hand store.
 
--   Built with `React` and `Next.JS`
+-   Built with `React` and `Next.js`
 -   Managing state with `React Query`
 -   Handling forms and validation with `React Hook Form` and `zod`
 -   Managing content with `Contentful CMS`
@@ -23,14 +23,14 @@ For a quick start, rename `.env.local.example` to `.env.local` and open it. This
 <details><summary>NEXT_PUBLIC_CONTENTFUL_SPACE_ID</summary>
 
 Your Contentful space ID.  
-You can find it in Contentful Dashboard (https://app.contentful.com/) under `Settings` -> `General Settings` -> `Space ID`
+You can find it in the dashboard (https://app.contentful.com) under `Settings` -> `General Settings` -> `Space ID`
 
 </details>
 
 <details><summary>NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN</summary>
 
 Your Contentful access token.  
-You can create a new access token in Contentful Dashboard (https://app.contentful.com/) under `Settings` -> `API keys` -> `Add API key`.  
+You can create a new access token in the dashboard (https://app.contentful.com) under `Settings` -> `API keys` -> `Add API key`.  
 After creating your API key, copy the "Content Delivery API - access token" value.
 
 </details>
@@ -45,7 +45,7 @@ This google account must generate and use an App Password (see `NEXT_PUBLIC_PASS
 <details><summary>NEXT_PUBLIC_PASSWORD</summary>
 
 An App Password for the google account mentioned in `NEXT_PUBLIC_EMAIL_ADDRESS`.  
-See https://support.google.com/accounts/answer/185833?hl=en for more information.
+See https://support.google.com/accounts/answer/185833?hl=en for information on how to generate an App Password.
 
 </details>
 
@@ -57,4 +57,4 @@ To start the development server, run:
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000) with your browser.
+Then open http://localhost:3000 with your browser.
