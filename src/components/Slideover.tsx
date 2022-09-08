@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 
 type SlideoverProps = {
     children: React.ReactNode | React.ReactNode[];
-    title: string;
+    title: string | React.ReactNode;
     isOpen: boolean;
     handleClose: () => void;
 };

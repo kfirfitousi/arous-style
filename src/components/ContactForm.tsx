@@ -23,10 +23,12 @@ const ContactForm = ({ productName }: ContactFormProps) => {
 
     if (isSuccess) {
         return (
-            <div className="h-full flex flex-col items-center justify-center text-lg text-teal-800">
+            <div className="h-full flex flex-col items-center justify-center text-lg text-center text-teal-800">
                 <CheckCircleIcon className="h-12 w-12" />
                 <p dir="rtl">פנייתך התקבלה בהצלחה!</p>
+                <p dir="rtl">ניצור איתך קשר בהקדם.</p>
                 <p>Your message has been sent!</p>
+                <p>We&apos;ll contact you soon.</p>
             </div>
         );
     }

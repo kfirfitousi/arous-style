@@ -22,8 +22,15 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
     return (
         <Slideover
             isOpen={isOpen}
-            title={`${product.title_en && `${product.title_en} • `}${product.title}`}
             handleClose={closeSlideover}
+            title={
+                <>
+                    {product.title_en && (
+                        <span className="mr-1 whitespace-nowrap">{product.title_en} •</span>
+                    )}
+                    <span>{product.title}</span>
+                </>
+            }
         >
             <div className="relative w-full h-full max-h-[50%]">
                 <Image
