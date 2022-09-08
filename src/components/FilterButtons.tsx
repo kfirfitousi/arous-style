@@ -3,14 +3,7 @@ import type { SetStateAction } from 'react';
 import FilterButton from './FilterButton';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-const filterTags = [
-    ['dress', 'Dresses • שמלות • فساتين'],
-    ['skirt', 'Skirts • חצאיות • التنورات'],
-    ['shirt', 'Shirts • חולצות • القمصان'],
-    ['accessory', 'Accessories • אביזרים • اكسسوارات'],
-    ['shoes', 'Shoes • נעליים • الاحذيه'],
-    ['jewelry', 'Jewelry • תכשיטים • المجوهرات']
-];
+import { FILTER_TAGS } from '@/config';
 
 type FilterButtonsProps = {
     filters: string[];
@@ -28,7 +21,7 @@ const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
                 <label className="sr-only">Clear filters • בטל סינון</label>
             </button>
 
-            {filterTags.map(([tag, label]) => (
+            {Object.entries(FILTER_TAGS).map(([tag, label]) => (
                 <FilterButton
                     key={tag}
                     filter={tag}
@@ -40,4 +33,5 @@ const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
         </section>
     );
 };
+
 export default FilterButtons;

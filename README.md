@@ -18,12 +18,14 @@
 
 # Configuration
 
+### Environment variables
+
 For a quick start, rename `.env.local.example` to `.env.local` and open it. This file contains all the neccessary configurations for this project.
 
 <details><summary>NEXT_PUBLIC_CONTENTFUL_SPACE_ID</summary>
 
 Your Contentful space ID.  
-You can find it in the dashboard (https://app.contentful.com) under `Settings` -> `General Settings` -> `Space ID`
+You can find it in the dashboard (https://app.contentful.com) under `Settings` -> `General Settings` -> `Space ID`.
 
 </details>
 
@@ -48,6 +50,12 @@ An App Password for the google account mentioned in `NEXT_PUBLIC_EMAIL_ADDRESS`.
 See https://support.google.com/accounts/answer/185833?hl=en for information on how to generate an App Password.
 
 </details>
+
+### Modifying product filters
+
+The product filters are defined in the config file [src/config/index.ts](src/config/index.ts).  
+Add a new filter by adding a new key to the `FILTER_TAGS` object.  
+The key should match the tag name in Contentful, the value is the label that will be displayed on the button.
 
 # Development
 
