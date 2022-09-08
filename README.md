@@ -52,10 +52,16 @@ See https://support.google.com/accounts/answer/185833?hl=en for information on h
 
 </details>
 
+### Contact Form
+
+The contact form is using the `nodemailer` package to send a new mail for every submission.  
+The mail is sent from the Gmail address mentioned in `NEXT_PUBLIC_EMAIL_ADDRESS`.  
+The mail recipient, the subject and the body are configurable in [src/config/index.ts](src/config/index.ts).
+
 ### Modifying Product Filters
 
 The product filters are defined in [src/config/index.ts](src/config/index.ts).  
-Add a new filter by adding an entry to the `FILTER_TAGS` object.  
+Add a new filter by adding an entry to the `filterTags` object.  
 The key should match the tag name in Contentful, the value is the label that will be displayed on the button.
 
 # Development

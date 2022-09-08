@@ -3,7 +3,7 @@ import type { SetStateAction } from 'react';
 import FilterButton from './FilterButton';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-import { FILTER_TAGS } from '@/config';
+import { filterTags } from '@/config';
 
 type FilterButtonsProps = {
     filters: string[];
@@ -21,7 +21,7 @@ const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
                 <label className="sr-only">Clear filters • בטל סינון</label>
             </button>
 
-            {Object.entries(FILTER_TAGS).map(([tag, label]) => (
+            {Object.entries(filterTags).map(([tag, label]) => (
                 <FilterButton
                     key={tag}
                     filter={tag}

@@ -2,6 +2,7 @@ import type { NextApiResponse, NextApiRequest } from 'next';
 import { ContactFormFields, ContactResponse, ContactSchema } from '@/types';
 
 import { transporter } from '@/lib/nodemailer';
+import { contactEmailConfig } from '@/config';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse>) => {
     if (req.method !== 'POST') {
@@ -24,22 +25,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse
 
     const email = await transporter.sendMail({
         from: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-        to: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-        subject: 'פנייה חדשה התקבלה באתר לקנות בסטייל',
-        text: `
-            שם: ${name}
-            מס׳ טלפון: ${phone}
-            מוצר: ${productName || 'לא נבחר'}
-            הודעה: ${message || '-'}
-        `,
-        html: `
-            <p dir="rtl">
-                שם: ${name}<br>
-                מס׳ טלפון: ${phone}<br>
-                מוצר: ${productName || 'לא נבחר'}<br>
-                הודעה: ${message?.replace(/(?:\r\n|\r|\n)/g, '<br>') || '-'}
-            </p>
-        `
+        to: contactEmailConfig.recipient,
+        subject: contactEmailConfig.subject,
+        html: contactEmailConfig.body({ name, phone, message, productName })
     });
 
     if (!email) {
