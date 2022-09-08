@@ -16,13 +16,13 @@ export const getProducts = async (): Promise<Product[]> => {
         content_type: 'product'
     });
 
-    return products.items.map((product) => ({
-        id: product.sys.id,
-        title: product.fields.title.he!,
-        title_en: product.fields.title.en || '',
-        price: product.fields.price!.he!,
-        tags: product.metadata.tags.map((tag) => tag.sys.id),
-        pictures: product.fields.pictures!.he!.map((pic) => ({
+    return products.items.map(({ sys, fields, metadata }) => ({
+        id: sys.id,
+        title: fields.title.he!,
+        title_en: fields.title.en || '',
+        price: fields.price!.he!,
+        tags: metadata.tags.map((tag) => tag.sys.id),
+        pictures: fields.pictures!.he!.map((pic) => ({
             id: pic.sys.id,
             url: `https:${pic.fields.file!.he!.url}`,
             width: pic.fields.file!.he!.details.image!.width,

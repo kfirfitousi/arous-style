@@ -45,15 +45,15 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
             </div>
 
             <div className="p-2 flex flex-row flex-wrap items-center justify-center mt-1">
-                {product.pictures.map((picture, index) => (
+                {product.pictures.map(({ id, url }, index) => (
                     <button
-                        key={picture.id}
+                        key={id}
                         className="relative w-10 h-10 sm:w-14 sm:h-14 m-0.5 rounded-lg hover:border-2 border-teal-800"
                         onClick={() => setSelectedPictureNumber(index)}
                     >
                         <Image
                             loader={contentfulLoader}
-                            src={picture.url}
+                            src={url}
                             alt={product.title}
                             quality={50}
                             layout="fill"

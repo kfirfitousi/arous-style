@@ -11,8 +11,8 @@ import Image from 'next/image';
 import Socials from '~/Socials';
 import InfoBox from '~/InfoBox';
 
-// import Gallery dynamically to reduce first load bundle size
-const Gallery = dynamic<{}>(() => import('~/Gallery'), {
+// import Catalog dynamically to reduce first load bundle size
+const Catalog = dynamic<{}>(() => import('@/components/Catalog'), {
     suspense: true
 });
 
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                             </div>
                         }
                     >
-                        <Gallery />
+                        <Catalog />
                     </Suspense>
                 </section>
 
