@@ -96,9 +96,9 @@ const Gallery = () => {
                             setSelectedProductId(product.id);
                             setSlideoverOpen(true);
                         }}
-                        className="p-2 basis-full hover:scale-105 sm:basis-1/2 lg:basis-1/3"
+                        className="p-2 h-full sm:h-80 md:h-96 flex flex-col basis-full hover:scale-105 sm:basis-1/2 xl:basis-1/3"
                     >
-                        <div className="relative w-full h-80 sm:h-90">
+                        <div className="relative w-full h-96 sm:h-64 md:h-80 flex-shrink">
                             <Image
                                 loader={contentfulLoader}
                                 src={product.pictures[0].url}
@@ -114,8 +114,8 @@ const Gallery = () => {
                         <div className="text-teal-700 bg-teal-50 rounded-b-lg">
                             <h3 className="text-center text-lg px-0.5 flex flex-row flex-wrap justify-center">
                                 {product.title_en && (
-                                    <span className="mr-0.5 whitespace-nowrap">
-                                        {product.title_en} •{' '}
+                                    <span className="mr-1 whitespace-nowrap">
+                                        {product.title_en} •
                                     </span>
                                 )}
                                 <span>{product.title}</span>
