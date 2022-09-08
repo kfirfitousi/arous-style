@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Socials from '~/Socials';
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import InfoBox from '~/InfoBox';
 
 // import Gallery dynamically to reduce first load bundle size
 const Gallery = dynamic<{}>(() => import('~/Gallery'), {
@@ -56,48 +56,35 @@ const Home: NextPage = () => {
                     <Socials />
 
                     <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8 mb-4 sm:mb-0 text-teal-800">
-                        <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
-                            <p className="text-xl underline sm:no-underline">Arous Elbahar</p>
-                            <p className="mt-4 text-sm">
-                                Arous Elbahar (Bride of the Sea) Association for Women in Jaffa is a
-                                non-profit women&apos;s organization, founded by a group of female
-                                Arab residents of Jaffa. Our mission is to provide Jaffa&apos;s with
-                                the tools and resources they need to make a positive difference in
-                                their lives - in the personal, economic, and community level.
-                            </p>
-                            <div className="mt-4">
-                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
-                                <span className="ml-0.5">Pierre Mendes France 19, Jaffa</span>
-                            </div>
-                        </div>
+                        <InfoBox
+                            title="Arous Elbahar"
+                            text="Arous Elbahar (Bride of the Sea) Association for Women in Jaffa is a
+                            non-profit women's organization, founded by a group of female
+                            Arab residents of Jaffa. Our mission is to provide Jaffa's with
+                            the tools and resources they need to make a positive difference in
+                            their lives - in the personal, economic, and community level."
+                            address="Pierre Mendes France 19, Jaffa"
+                        />
 
-                        <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
-                            <p className="text-xl underline sm:no-underline">عروس البحر</p>
-                            <p className="mt-4" dir="rtl">
-                                لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة
-                                وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
-                                السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،
-                            </p>
-                            <div className="mt-4" dir="rtl">
-                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
-                                <span className="mr-0.5">بيير مندس فرانس 19, يافا</span>
-                            </div>
-                        </div>
+                        <InfoBox
+                            title="عروس البحر"
+                            text="لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة
+                            وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك
+                            السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة،"
+                            address="بيير مندس فرانس 19, يافا"
+                            rtl
+                        />
 
-                        <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
-                            <p className="text-xl underline sm:no-underline">ערוס אלבחר</p>
-                            <p className="mt-4 text-sm" dir="rtl">
-                                עמותת ערוס אלבחר (כלת הים) לנשים ביפו היא ארגון ללא מטרות רווח שנוסד
-                                על ידי קבוצה של נשים ערביות תושבות יפו. העמותה פועלת לקידום מעמדן
-                                ומעורבותן של נשים ביפו, ומספקת להן כלים ומשאבים על מנת לחולל שינוי
-                                חיובי בחייהן – מבחינה אישית, כלכלית וקהילתית - תוך הגברת מעורבותן
-                                הפעילה בקהילה ובשוק העבודה.
-                            </p>
-                            <div className="mt-4" dir="rtl">
-                                <MapPinIcon className="w-6 h-6 pb-1 inline" />
-                                <span className="mr-0.5">פייר מנדס פרנס 19, יפו</span>
-                            </div>
-                        </div>
+                        <InfoBox
+                            title="ערוס אלבחר"
+                            text="עמותת ערוס אלבחר (כלת הים) לנשים ביפו היא ארגון ללא מטרות רווח שנוסד
+                            על ידי קבוצה של נשים ערביות תושבות יפו. העמותה פועלת לקידום מעמדן
+                            ומעורבותן של נשים ביפו, ומספקת להן כלים ומשאבים על מנת לחולל שינוי
+                            חיובי בחייהן – מבחינה אישית, כלכלית וקהילתית - תוך הגברת מעורבותן
+                            הפעילה בקהילה ובשוק העבודה."
+                            address="פייר מנדס פרנס 19, יפו"
+                            rtl
+                        />
                     </section>
                 </section>
             </main>
