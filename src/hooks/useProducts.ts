@@ -3,7 +3,7 @@ import type { EntryFields, Asset } from 'contentful';
 import type { Product } from '@/types';
 
 import { useQuery } from '@tanstack/react-query';
-import { client } from '@/lib/contentful';
+import { contentfulClient } from '@/lib/contentful';
 
 type ProductEntryFields = {
     title: EntryFields.Text;
@@ -12,7 +12,7 @@ type ProductEntryFields = {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-    const entries = await client.getEntries<ProductEntryFields, 'he' | 'en'>({
+    const entries = await contentfulClient.withAllLocales.getEntries<ProductEntryFields, 'he' | 'en'>({
         content_type: 'product'
     });
 

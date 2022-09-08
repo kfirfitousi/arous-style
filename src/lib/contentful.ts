@@ -1,21 +1,19 @@
-import type { ImageLoaderProps } from 'next/image';
+import type { ImageLoader } from 'next/image';
 
 import { contentfulLoader as cfLoader } from '@delicious-simplicity/next-image-contentful-loader';
-import { createClient, CreateClientParams } from 'contentful';
+import { createClient } from 'contentful';
 
 /**
- * Config for Contentful client
- * Set these environment variables in .env.local
+ * Contentful client for fetching data from the Contentful API.
+ * Set these environment variables in .env.local.
  * See README.md for more info
  */
-const config: CreateClientParams = {
+export const contentfulClient = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID!,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN!
-};
+});
 
-export const client = createClient(config).withAllLocales;
-
-export const contentfulLoader = (props: ImageLoaderProps) =>
+export const contentfulLoader: ImageLoader = (props) =>
     cfLoader(props, {
         fm: 'jpg',
         fl: 'progressive',
