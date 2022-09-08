@@ -12,11 +12,15 @@ type ProductEntryFields = {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-    const products = await client.getEntries<ProductEntryFields, 'he' | 'en'>({
+    const entries = await client.getEntries<ProductEntryFields, 'he' | 'en'>({
         content_type: 'product'
     });
 
-    return products.items.map(({ sys, fields, metadata }) => ({
+    // The 'product' content type should have 'title','price' and 'pictures' fields.
+    // - title is required in hebrew but not in english.
+    // - price is required.
+    // - at least one picture is required.
+    return entries.items.map(({ sys, fields, metadata }) => ({
         id: sys.id,
         title: fields.title.he!,
         title_en: fields.title.en || '',
