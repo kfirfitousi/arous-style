@@ -7,6 +7,7 @@
 -   Handling forms and validation with `React Hook Form` and `zod`
 -   Managing content with `Contentful CMS`
 -   Styling with `TailwindCSS`
+-   Deployed with `Vercel`
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -18,9 +19,9 @@
 
 # Configuration
 
-### Environment variables
+### Environment Variables
 
-For a quick start, rename `.env.local.example` to `.env.local` and open it. This file contains all the neccessary configurations for this project.
+For a quick start, rename `.env.local.example` in the project root to `.env.local` and open it. This file contains all the neccessary environment variables for the project.
 
 <details><summary>NEXT_PUBLIC_CONTENTFUL_SPACE_ID</summary>
 
@@ -51,10 +52,10 @@ See https://support.google.com/accounts/answer/185833?hl=en for information on h
 
 </details>
 
-### Modifying product filters
+### Modifying Product Filters
 
-The product filters are defined in the config file [src/config/index.ts](src/config/index.ts).  
-Add a new filter by adding a new key to the `FILTER_TAGS` object.  
+The product filters are defined in [src/config/index.ts](src/config/index.ts).  
+Add a new filter by adding an entry to the `FILTER_TAGS` object.  
 The key should match the tag name in Contentful, the value is the label that will be displayed on the button.
 
 # Development
