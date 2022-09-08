@@ -1,15 +1,7 @@
 import type { NextApiResponse, NextApiRequest } from 'next';
 import { ContactFormFields, ContactResponse, ContactSchema } from '@/types';
 
-import nodemailer from 'nodemailer';
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
-        pass: process.env.NEXT_PUBLIC_PASSWORD
-    }
-});
+import { transporter } from '@/lib/nodemailer';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse>) => {
     if (req.method !== 'POST') {
@@ -31,8 +23,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse
     const { name, phone, message, productName } = validation.data;
 
     const email = await transporter.sendMail({
-        to: 'kfirfitousi@gmail.com',
-        from: 'kfirfitousi@gmail.com',
+        from: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
+        to: process.env.NEXT_PUBLIC_EMAIL_ADDRESS,
         subject: 'פנייה חדשה התקבלה באתר לקנות בסטייל',
         text: `
             שם: ${name}
