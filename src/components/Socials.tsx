@@ -6,7 +6,10 @@ import InstagramSVG from 'public/instagram.svg';
 const Socials = () => {
     return (
         <div className="flex flex-row flex-wrap justify-center mt-5 text-teal-800">
-            <a href="tel:+97236573714" className="flex flex-row items-center space-x-1 px-4 hover:underline">
+            <a
+                href="tel:+97236573714"
+                className="flex flex-row items-center space-x-1 px-4 hover:underline"
+            >
                 <PhoneIcon className="h-5 w-5" />
                 <span className="text-lg">03-657-2714</span>
             </a>
