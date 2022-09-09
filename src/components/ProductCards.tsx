@@ -13,7 +13,7 @@ const ProductCards = ({ products, setSelectedProductId, setSlideoverOpen }: Prod
     return (
         <section className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
             {!products.length && (
-                <div className="text-teal-800 my-20">
+                <div className="text-teal-800 text-center text-lg my-20">
                     <XCircleIcon className="h-12 w-12 mx-auto" />
                     <p>לא נמצאו מוצרים בקטגוריה זו</p>
                     <p>No products found in this category</p>

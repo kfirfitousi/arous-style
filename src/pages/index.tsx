@@ -53,6 +53,7 @@ const Home: NextPage = () => {
                             alt="Arous Style"
                             width={1115}
                             height={721}
+                            quality={100}
                         />
                     </div>
 
