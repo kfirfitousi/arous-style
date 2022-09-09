@@ -12,7 +12,10 @@ type ProductEntryFields = {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-    const entries = await contentfulClient.withAllLocales.getEntries<ProductEntryFields, 'he' | 'en'>({
+    const entries = await contentfulClient.withAllLocales.getEntries<
+        ProductEntryFields,
+        'he' | 'en'
+    >({
         content_type: 'product'
     });
 

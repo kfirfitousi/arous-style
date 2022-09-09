@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import Spinner from './Spinner';
 
 type ContactFormProps = {
     productName: string;
@@ -81,7 +82,7 @@ const ContactForm = ({ productName }: ContactFormProps) => {
                 disabled={isLoading}
                 onClick={handleSubmit((data) => mutate(data))}
             >
-                {isLoading ? '•••' : 'Send • שלח • إرسال'}
+                {isLoading ? <Spinner className="text-white" /> : 'Send • שלח • إرسال'}
             </button>
 
             {isError && (

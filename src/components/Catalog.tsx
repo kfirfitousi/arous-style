@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import FilterButtons from './FilterButtons';
 import ProductCards from './ProductCards';
+import Spinner from './Spinner';
 
 // import ProductSlideover dynamically to reduce first load bundle size
 const ProductSlideover = dynamic<{
@@ -39,7 +40,9 @@ const Catalog = () => {
     if (isLoading) {
         return (
             <div className="h-full flex flex-col items-center justify-center text-teal-800">
-                Loading...
+                <Spinner className="text-teal-800" />
+                <p className="text-xl">טוען קטלוג</p>
+                <p className="text-xl">Loading Catalog</p>
             </div>
         );
     }

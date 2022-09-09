@@ -10,9 +10,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Socials from '~/Socials';
 import InfoBox from '~/InfoBox';
+import Spinner from '~/Spinner';
 
 // import Catalog dynamically to reduce first load bundle size
-const Catalog = dynamic<{}>(() => import('@/components/Catalog'), {
+const Catalog = dynamic<{}>(() => import('~/Catalog'), {
     suspense: true
 });
 
@@ -34,7 +35,9 @@ const Home: NextPage = () => {
                     <Suspense
                         fallback={
                             <div className="h-full flex flex-col items-center justify-center text-teal-800">
-                                Loading...
+                                <Spinner className="text-teal-800" />
+                                <p className="text-xl">טוען קטלוג</p>
+                                <p className="text-xl">Loading Catalog</p>
                             </div>
                         }
                     >
