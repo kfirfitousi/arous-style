@@ -14,7 +14,8 @@ import Spinner from '~/Spinner';
 
 // import Catalog dynamically to reduce first load bundle size
 const Catalog = dynamic<{}>(() => import('~/Catalog'), {
-    suspense: true
+    suspense: true,
+    ssr: false
 });
 
 const Home: NextPage = () => {
