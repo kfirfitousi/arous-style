@@ -1,7 +1,8 @@
 import type { NextApiResponse, NextApiRequest } from 'next';
-import { ContactResponse, ContactSchema } from '@/types';
+import type { ContactResponse } from '@/types';
 
 import { transporter } from '@/lib/nodemailer';
+import { ContactSchema } from '~/ContactForm';
 import { contactEmailConfig } from '@/config';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ContactResponse>) => {

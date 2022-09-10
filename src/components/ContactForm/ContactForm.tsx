@@ -1,7 +1,9 @@
-import { ContactFormFields, ContactSchema } from '@/types';
+import type { ContactFormFields } from '@/types';
+
 import { useContact } from '@/hooks/useContact';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ContactSchema } from './ContactSchema';
 
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { Spinner } from '~/UI';
