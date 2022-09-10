@@ -27,7 +27,6 @@ const Home: NextPage = () => {
     return (
         <>
             <Head>
-                <html lang="en" />
                 <title>Arous Style - לקנות בסטייל</title>
                 <meta name="description" content="Arous Style" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
