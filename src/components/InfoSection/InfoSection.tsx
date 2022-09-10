@@ -12,6 +12,7 @@ export const InfoSection = () => {
                     width={1115}
                     height={721}
                     quality={100}
+                    priority
                 />
             </div>
 
