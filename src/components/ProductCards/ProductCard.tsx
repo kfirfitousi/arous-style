@@ -8,7 +8,7 @@ type ProductCardProps = {
     onSelect: () => void;
 };
 
-const ProductCard = ({ product, onSelect }: ProductCardProps) => {
+export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
     return (
         <div
             key={product.id}
@@ -40,5 +40,3 @@ const ProductCard = ({ product, onSelect }: ProductCardProps) => {
         </div>
     );
 };
-
-export default ProductCard;

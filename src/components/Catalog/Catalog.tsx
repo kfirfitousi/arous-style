@@ -5,18 +5,20 @@ import { useProducts } from '@/hooks/useProducts';
 import dynamic from 'next/dynamic';
 
 import { XCircleIcon } from '@heroicons/react/24/outline';
-import FilterButtons from './FilterButtons';
-import ProductCards from './ProductCards';
-import Spinner from './Spinner';
+import { FilterButtons } from '~/FilterButtons';
+import { ProductCards } from '~/ProductCards';
+import { Spinner } from '~/UI';
 
 // import ProductSlideover dynamically to reduce first load bundle size
 const ProductSlideover = dynamic<{
     product: Product;
     isOpen: boolean;
     closeSlideover: () => void;
-}>(() => import('./ProductSlideover'), { ssr: false });
+}>(() => import('~/ProductSlideover').then((mod) => mod.ProductSlideover), {
+    ssr: false
+});
 
-const Catalog = () => {
+export const Catalog = () => {
     const [filters, setFilters] = useState<string[]>([]);
     const [slideoverOpen, setSlideoverOpen] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState<string>('');
@@ -69,5 +71,3 @@ const Catalog = () => {
         </section>
     );
 };
-
-export default Catalog;

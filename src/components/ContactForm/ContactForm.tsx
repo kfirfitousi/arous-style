@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import Spinner from './Spinner';
+import { Spinner } from '~/UI';
 
 type ContactFormProps = {
     productName: string;
 };
 
-const ContactForm = ({ productName }: ContactFormProps) => {
+export const ContactForm = ({ productName }: ContactFormProps) => {
     const {
         register,
         handleSubmit,
@@ -74,7 +74,9 @@ const ContactForm = ({ productName }: ContactFormProps) => {
                 className="border border-teal-800 rounded-lg p-1"
                 {...register('message')}
             />
-            {errors.message && <span className="text-red-500">{errors.message.message}</span>}
+            {errors.message && (
+                <span className="text-red-500 text-center">{errors.message.message}</span>
+            )}
 
             <button
                 type="submit"
@@ -94,5 +96,3 @@ const ContactForm = ({ productName }: ContactFormProps) => {
         </form>
     );
 };
-
-export default ContactForm;

@@ -9,7 +9,7 @@ type FilterButtonProps = {
     setFilters: (value: SetStateAction<string[]>) => void;
 };
 
-const FilterButton = ({ filter, label, active, setFilters }: FilterButtonProps) => {
+export const FilterButton = ({ filter, label, active, setFilters }: FilterButtonProps) => {
     const toggleFilter = (filterName: string) => {
         setFilters((activeFilters) =>
             activeFilters.includes(filterName)
@@ -30,5 +30,3 @@ const FilterButton = ({ filter, label, active, setFilters }: FilterButtonProps) 
         </button>
     );
 };
-
-export default FilterButton;

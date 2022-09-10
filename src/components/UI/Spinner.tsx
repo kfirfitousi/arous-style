@@ -2,7 +2,7 @@ type SpinnerProps = {
     className?: string;
 };
 
-const Spinner = ({ className }: SpinnerProps) => {
+export const Spinner = ({ className }: SpinnerProps) => {
     return (
         <span className={className}>
             <span className="animate-fade-in-out">•</span>
@@ -11,5 +11,3 @@ const Spinner = ({ className }: SpinnerProps) => {
         </span>
     );
 };
-
-export default Spinner;

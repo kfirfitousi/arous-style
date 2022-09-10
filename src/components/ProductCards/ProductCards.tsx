@@ -1,6 +1,6 @@
 import type { Product } from '@/types';
 
-import ProductCard from './ProductCard';
+import { ProductCard } from './ProductCard';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 
 type ProductCardsProps = {
@@ -9,7 +9,11 @@ type ProductCardsProps = {
     setSlideoverOpen: (value: boolean) => void;
 };
 
-const ProductCards = ({ products, setSelectedProductId, setSlideoverOpen }: ProductCardsProps) => {
+export const ProductCards = ({
+    products,
+    setSelectedProductId,
+    setSlideoverOpen
+}: ProductCardsProps) => {
     return (
         <section className="flex flex-row flex-wrap justify-center items-center my-4 px-4">
             {!products.length && (
@@ -33,5 +37,3 @@ const ProductCards = ({ products, setSelectedProductId, setSlideoverOpen }: Prod
         </section>
     );
 };
-
-export default ProductCards;

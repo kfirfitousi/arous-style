@@ -7,7 +7,7 @@ type InfoBoxProps = {
     rtl?: boolean;
 };
 
-const InfoBox = ({ title, text, address, rtl = false }: InfoBoxProps) => {
+export const InfoBox = ({ title, text, address, rtl = false }: InfoBoxProps) => {
     return (
         <div className="basis-1/3 px-3 mt-3 sm:mt-0 flex flex-col items-center justify-between text-center sm:border-r border-gray-700">
             <p className="text-xl underline sm:no-underline">{title}</p>
@@ -28,5 +28,3 @@ const InfoBox = ({ title, text, address, rtl = false }: InfoBoxProps) => {
         </div>
     );
 };
-
-export default InfoBox;

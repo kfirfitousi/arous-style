@@ -1,6 +1,6 @@
 import type { SetStateAction } from 'react';
 
-import FilterButton from './FilterButton';
+import { FilterButton } from './FilterButton';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { filterTags } from '@/config';
@@ -10,7 +10,7 @@ type FilterButtonsProps = {
     setFilters: (value: SetStateAction<string[]>) => void;
 };
 
-const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
+export const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
     return (
         <section className="flex flex-row flex-wrap justify-center mt-3 px-2">
             <button
@@ -33,5 +33,3 @@ const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
         </section>
     );
 };
-
-export default FilterButtons;

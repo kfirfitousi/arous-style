@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { contentfulLoader } from '@/lib/contentful';
 
 import Image from 'next/image';
-import Slideover from './Slideover';
-import ContactForm from './ContactForm';
+import { Slideover } from '~/UI';
+import { ContactForm } from '~/ContactForm';
 
 type ProductSlideoverProps = {
     product: Product;
@@ -13,7 +13,7 @@ type ProductSlideoverProps = {
     closeSlideover: () => void;
 };
 
-const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverProps) => {
+export const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverProps) => {
     const [selectedPictureNumber, setSelectedPictureNumber] = useState(0);
 
     // reset selected picture when product changes
@@ -68,5 +68,3 @@ const ProductSlideover = ({ product, isOpen, closeSlideover }: ProductSlideoverP
         </Slideover>
     );
 };
-
-export default ProductSlideover;
