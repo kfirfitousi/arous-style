@@ -46,6 +46,7 @@ type UseProductsOptions = {
 
 export const useProducts = ({ config }: UseProductsOptions = {}) => {
     return useQuery<ExtractFnReturnType<QueryFnType>>({
+        staleTime: 60 * 60 * 1000,
         queryKey: ['products'],
         queryFn: getProducts,
         ...config

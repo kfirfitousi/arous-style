@@ -2,7 +2,7 @@
 
 ### Online catalog for Arous Elbahar's second-hand store.
 
--   Built with `React` and `Next.js`
+-   Built with `React`, `Next.js` and `TypeScript`
 -   Managing state with `React Query`
 -   Handling forms and validation with `React Hook Form` and `zod`
 -   Managing content with `Contentful CMS`
@@ -58,11 +58,11 @@ The contact form is using the `nodemailer` package to send a new mail for every 
 The mail is sent from the Gmail address mentioned in `NEXT_PUBLIC_EMAIL_ADDRESS`.  
 The mail recipient, the subject and the body are configurable in [src/config/index.ts](src/config/index.ts).
 
-### Modifying Product Filters
+### Product Categories
 
-The product filters are defined in [src/config/index.ts](src/config/index.ts).  
-Add a new filter by adding an entry to the `filterTags` object.  
-The key should match the tag name in Contentful, the value is the label that will be displayed on the button.
+Contentful's tags are used to categorize products.  
+You can edit these tags in the dashboard (https://app.contentful.com) under `Settings` -> `Tags`.  
+The tag name is used as a label for the category.
 
 # Development
 

@@ -3,6 +3,7 @@ import type { NextPage, GetStaticProps } from 'next';
 import { dehydrate } from '@tanstack/react-query';
 import { queryClient } from '@/lib/react-query';
 import { getProducts } from '@/hooks/useProducts';
+import { getTags } from '@/hooks/useTags';
 import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
@@ -60,9 +61,8 @@ const Home: NextPage = () => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    await queryClient.prefetchQuery(['products'], getProducts, {
-        staleTime: 60 * 60 * 1000
-    });
+    await queryClient.prefetchQuery(['products'], getProducts);
+    await queryClient.prefetchQuery(['tags'], getTags);
 
     return {
         props: {

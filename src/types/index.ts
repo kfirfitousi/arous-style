@@ -20,10 +20,6 @@ export type Product = {
     pictures: Picture[];
 };
 
-export type FilterTags = {
-    [key: string]: string;
-};
-
 export type ContactFormFields = {
     name: string;
     phone: string;

@@ -23,11 +23,7 @@ export const Catalog = () => {
     const [slideoverOpen, setSlideoverOpen] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState<string>('');
 
-    const { data, isLoading, isError } = useProducts({
-        config: {
-            staleTime: 60 * 60 * 1000
-        }
-    });
+    const { data, isLoading, isError } = useProducts();
 
     if (isError) {
         return (

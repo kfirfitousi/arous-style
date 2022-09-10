@@ -1,9 +1,10 @@
 import type { SetStateAction } from 'react';
 
+import { useTags } from '@/hooks/useTags';
+
 import { FilterButton } from './FilterButton';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-
-import { filterTags } from '@/config';
+import { Spinner } from '../UI';
 
 type FilterButtonsProps = {
     filters: string[];
@@ -11,6 +12,16 @@ type FilterButtonsProps = {
 };
 
 export const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
+    const { data, isLoading } = useTags();
+
+    if (isLoading) {
+        return (
+            <div className="h-14 flex items-center justify-center">
+                <Spinner className="text-xl text-teal-800" />
+            </div>
+        );
+    }
+
     return (
         <section className="flex flex-row flex-wrap justify-center mt-3 px-2">
             <button
@@ -21,12 +32,12 @@ export const FilterButtons = ({ filters, setFilters }: FilterButtonsProps) => {
                 <label className="sr-only">Clear filters • בטל סינון</label>
             </button>
 
-            {Object.entries(filterTags).map(([tag, label]) => (
+            {data?.map(({ id, name }) => (
                 <FilterButton
-                    key={tag}
-                    filter={tag}
-                    label={label}
-                    active={filters.includes(tag)}
+                    key={id}
+                    filter={id}
+                    label={name}
+                    active={filters.includes(id)}
                     setFilters={setFilters}
                 />
             ))}
