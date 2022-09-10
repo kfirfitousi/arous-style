@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import FacebookSVG from 'public/facebook.svg';
 import InstagramSVG from 'public/instagram.svg';
 
@@ -19,7 +19,9 @@ export const Socials = () => {
                 rel="noreferrer"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
             >
-                <Image src={InstagramSVG} alt="Instagram" width={18} height={18} />
+                <span className="relative w-5 h-5">
+                    <Image src={InstagramSVG} alt="Instagram" layout="fill" />
+                </span>
                 <span className="text-lg">@arouselbahar</span>
             </a>
             <a
@@ -28,14 +30,16 @@ export const Socials = () => {
                 rel="noreferrer"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
             >
-                <Image src={FacebookSVG} alt="Email" width={20} height={20} />
+                <span className="relative w-5 h-5">
+                    <Image src={FacebookSVG} alt="Facebook" layout="fill" />
+                </span>
                 <span className="text-lg">fb.com/arous.elbahar.jaffa</span>
             </a>
             <a
                 href="mailto:arouselbaharorg@gmail.com"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
             >
-                <EnvelopeIcon className="w-6 h-6" />
+                <EnvelopeIcon className="w-d h-6" />
                 <span className="text-lg">arouselbaharorg@gmail.com</span>
             </a>
         </div>
