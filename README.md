@@ -73,3 +73,10 @@ npm run dev
 ```
 
 Then open http://localhost:3000 with your browser.
+
+# Deployment
+
+The easiest way to deploy this project is with Vercel.  
+Click the button below to start.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkfirfitousi%2Farous-style&env=NEXT_PUBLIC_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,NEXT_PUBLIC_EMAIL_ADDRESS,NEXT_PUBLIC_PASSWORD&envDescription=Contentful%20and%20Nodemailer%20configuration&envLink=https%3A%2F%2Fgithub.com%2Fkfirfitousi%2Farous-style%2Fblob%2Fmaster%2FREADME.md&project-name=arous-style&repo-name=arous-style)
