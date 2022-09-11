@@ -34,9 +34,15 @@ const Home: NextPage = () => {
                 />
             </Head>
 
-            <main className="h-full md:h-screen w-full flex flex-col-reverse md:flex-row">
+            <main
+                className="h-full md:h-screen w-full flex flex-col-reverse md:flex-row"
+                aria-label="Arous Style"
+            >
                 {/* Left/Bottom Side */}
-                <section className="min-w-[50%] bg-[#B0D0C6] sm:overflow-y-scroll">
+                <section
+                    className="min-w-[50%] bg-[#B0D0C6] sm:overflow-y-scroll"
+                    aria-label="Catalog"
+                >
                     <Suspense
                         fallback={
                             <div className="h-full flex flex-col items-center justify-center text-teal-800">
@@ -51,7 +57,10 @@ const Home: NextPage = () => {
                 </section>
 
                 {/* Right/Top Side */}
-                <section className="md:max-w-2xl flex flex-col items-center bg-green-50 sm:overflow-y-scroll">
+                <section
+                    className="md:max-w-2xl flex flex-col items-center bg-green-50 sm:overflow-y-scroll"
+                    aria-label="Info Section"
+                >
                     <InfoSection />
                 </section>
             </main>

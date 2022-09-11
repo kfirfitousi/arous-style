@@ -5,7 +5,7 @@ import { useProducts } from '@/hooks/useProducts';
 import dynamic from 'next/dynamic';
 
 import { XCircleIcon } from '@heroicons/react/24/outline';
-import { FilterButtons } from '~/FilterButtons';
+import { ProductCategories } from '~/ProductCategories';
 import { ProductCards } from '~/ProductCards';
 import { Spinner } from '~/UI';
 
@@ -45,13 +45,13 @@ export const Catalog = () => {
         );
     }
 
-    const filteredProducts = data.filter(
-        (product) => !filters.length || product.tags.some((tag) => filters.includes(tag))
-    );
+    const filteredProducts = filters.length
+        ? data.filter((product) => product.tags.some((tag) => filters.includes(tag)))
+        : data;
 
     return (
-        <section>
-            <FilterButtons filters={filters} setFilters={setFilters} />
+        <>
+            <ProductCategories filters={filters} setFilters={setFilters} />
 
             <ProductCards
                 products={filteredProducts}
@@ -64,6 +64,6 @@ export const Catalog = () => {
                 isOpen={slideoverOpen}
                 closeSlideover={() => setSlideoverOpen(false)}
             />
-        </section>
+        </>
     );
 };

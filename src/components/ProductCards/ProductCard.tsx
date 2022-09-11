@@ -10,10 +10,11 @@ type ProductCardProps = {
 
 export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
     return (
-        <div
+        <button
             key={product.id}
             onClick={onSelect}
-            className="p-2 h-full sm:h-80 md:h-96 flex flex-col basis-full hover:scale-105 sm:basis-1/2 xl:basis-1/3 cursor-pointer"
+            className="p-2 h-full sm:h-80 md:h-96 flex flex-col basis-full hover:scale-105 sm:basis-1/2 xl:basis-1/3"
+            aria-label="Product"
         >
             <div className="relative w-full h-96 sm:h-64 md:h-80 flex-shrink">
                 <Image
@@ -35,8 +36,12 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
                     )}
                     <span>{product.title}</span>
                 </label>
-                {product.price && <p className="text-center text-sm pb-1">₪{product.price}</p>}
+                {product.price && (
+                    <p className="text-center text-sm pb-1" aria-label="Price">
+                        ₪{product.price}
+                    </p>
+                )}
             </div>
-        </div>
+        </button>
     );
 };

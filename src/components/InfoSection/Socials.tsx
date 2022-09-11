@@ -9,6 +9,7 @@ export const Socials = () => {
             <a
                 href="tel:+97236573714"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
+                aria-label="Phone"
             >
                 <PhoneIcon className="h-5 w-5" />
                 <span className="text-lg">03-657-2714</span>
@@ -18,6 +19,7 @@ export const Socials = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
+                aria-label="Instagram"
             >
                 <span className="relative w-5 h-5">
                     <Image src={InstagramSVG} alt="Instagram" layout="fill" />
@@ -29,6 +31,7 @@ export const Socials = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
+                aria-label="Facebook"
             >
                 <span className="relative w-5 h-5">
                     <Image src={FacebookSVG} alt="Facebook" layout="fill" />
@@ -38,6 +41,7 @@ export const Socials = () => {
             <a
                 href="mailto:arouselbaharorg@gmail.com"
                 className="flex flex-row items-center space-x-1 px-4 hover:underline"
+                aria-label="Email"
             >
                 <EnvelopeIcon className="w-d h-6" />
                 <span className="text-lg">arouselbaharorg@gmail.com</span>

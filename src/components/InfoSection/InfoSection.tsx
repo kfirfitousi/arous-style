@@ -5,10 +5,10 @@ import { InfoBox } from './InfoBox';
 export const InfoSection = () => {
     return (
         <>
-            <div className="w-full">
+            <div className="w-full" aria-label="Arous Style Banner Photo">
                 <Image
                     src="/arous_banner.webp"
-                    alt="Arous Style"
+                    alt="Arous Style Banner Photo"
                     width={1115}
                     height={721}
                     quality={100}
@@ -18,7 +18,10 @@ export const InfoSection = () => {
 
             <Socials />
 
-            <section className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8 mb-4 sm:mb-0 text-teal-800">
+            <section
+                className="h-full flex flex-col-reverse sm:flex-row justify-center sm:py-8 mb-4 sm:mb-0 text-teal-800"
+                aria-label="About Us"
+            >
                 <InfoBox
                     title="Arous Elbahar"
                     text="Arous Elbahar (Bride of the Sea) Association for Women in Jaffa is a
