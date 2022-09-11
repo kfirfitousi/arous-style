@@ -26,8 +26,8 @@ export const ProductCategories = ({ filters, setFilters }: ProductCategoriesProp
             className="flex flex-row flex-wrap justify-center mt-3 px-2"
             aria-label="Product Categories"
         >
-            <Button className="px-1" active={false} onClick={() => setFilters([])}>
-                <XMarkIcon className="h-6 w-6" />
+            <Button className="px-1 py-0" onClick={() => setFilters([])}>
+                <XMarkIcon className="h-5 w-5 sm:h-6 sm:w-6" />
                 <label className="sr-only">Clear filters • בטל סינון</label>
             </Button>
 
@@ -38,7 +38,7 @@ export const ProductCategories = ({ filters, setFilters }: ProductCategoriesProp
                     onClick={() => {
                         setFilters((activeFilters) =>
                             activeFilters.includes(id)
-                                ? activeFilters.filter((filter) => filter !== id)
+                                ? activeFilters.filter((filterId) => filterId !== id)
                                 : [...activeFilters, id]
                         );
                     }}

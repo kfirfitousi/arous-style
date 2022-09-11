@@ -2,12 +2,12 @@ import clsx from 'clsx';
 
 type ButtonProps = {
     children?: React.ReactNode | React.ReactNode[];
-    active: boolean;
+    active?: boolean;
     className?: string;
     onClick: () => void;
 };
 
-export const Button = ({ children, active, className, onClick }: ButtonProps) => {
+export const Button = ({ children, active = false, className, onClick }: ButtonProps) => {
     return (
         <button
             className={clsx(
