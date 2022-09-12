@@ -19,6 +19,37 @@
 
 # Configuration
 
+### Contentful CMS
+
+The products are managed in the Contentful CMS dashboard (https://app.contentful.com).
+
+#### Locales
+
+Under `Settings` -> `Locales`, set the default to `Hebrew (he)` and add a new locale `English (en)`.  
+For the English locale, tick the "Allow empty fields for this locale" checkbox and don't provide a fallback locale.
+
+#### Content Model
+
+Under `Content model`, click on `Add content type` and create a new content model `Product`.  
+It should contain the following fields:
+
+1. Title 
+   - Short text 
+   - Enable localization on this field and set as required
+2. Price
+   - Integer
+   - Set as required
+3. Pictures
+   - Media, many files 
+   - Set as required
+
+#### Product Categories
+
+Contentful's tags are used to categorize products.  
+You can edit these tags under `Settings` -> `Tags`.  
+The tag name is used as a label for the category.  
+To apply a tag to a product, go to the product's entry under `Content` and click the `Tags` tab.
+
 ### Environment Variables
 
 For a quick start, rename `.env.local.example` in the project root to `.env.local` and open it. This file contains all the neccessary environment variables for the project.
@@ -26,14 +57,14 @@ For a quick start, rename `.env.local.example` in the project root to `.env.loca
 <details><summary>NEXT_PUBLIC_CONTENTFUL_SPACE_ID</summary>
 
 Your Contentful space ID.  
-You can find it in the dashboard (https://app.contentful.com) under `Settings` -> `General Settings` -> `Space ID`.
+You can find it under `Settings` -> `General Settings` -> `Space ID`.
 
 </details>
 
 <details><summary>NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN</summary>
 
 Your Contentful access token.  
-You can create a new access token in the dashboard (https://app.contentful.com) under `Settings` -> `API keys` -> `Add API key`.  
+You can create a new access token under `Settings` -> `API keys` -> `Add API key`.  
 After creating your API key, copy the "Content Delivery API - access token" value.
 
 </details>
@@ -57,12 +88,6 @@ See https://support.google.com/accounts/answer/185833?hl=en for information on h
 The contact form is using the `nodemailer` package to send a new mail for every submission.  
 The mail is sent from the Gmail address mentioned in `NEXT_PUBLIC_EMAIL_ADDRESS`.  
 The mail recipient, the subject and the body are configurable in [src/config/index.ts](src/config/index.ts).
-
-### Product Categories
-
-Contentful's tags are used to categorize products.  
-You can edit these tags in the dashboard (https://app.contentful.com) under `Settings` -> `Tags`.  
-The tag name is used as a label for the category.
 
 # Development
 
