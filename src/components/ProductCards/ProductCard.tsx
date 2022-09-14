@@ -29,7 +29,7 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
                 />
             </div>
 
-            <div className="text-teal-700 bg-teal-50 rounded-b-lg">
+            <div className="w-full text-teal-700 bg-teal-50 rounded-b-lg">
                 <label className="text-center text-lg px-0.5 flex flex-row flex-wrap justify-center">
                     {product.title_en && (
                         <span className="mr-1 whitespace-nowrap">{product.title_en} •</span>
